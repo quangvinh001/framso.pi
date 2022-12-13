@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+html {
+    
+}
+*{
+    box-sizing: border-box;
+    font-size: 62.5%;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../images/bg-01.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    padding: 65px 55px;
+    background-color: #ffffff ;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.login-top{
+    font-size: 39px ;
+    text-align: center;
+    color: #333333;
+    margin-bottom: 49px;
+    line-height: 40px;
+    font-weight: bold;
+}
+.login-label{
+    font-size: 18px ;
+    color: #333333;
+    display: inline-block;
+    padding-right: 7px;
+    padding-top: 10px;
+    line-height: 20px;
+}
+
+.login-input{
+    position: relative;
+    width: 100%;
+    height: 55px;
+   
+}
+
+.login-input input{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    padding: 0 7px 0 43px;
+    border-radius: 15px;
+    /* line-height: 1.2; */
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #7f7f7f;
+    border-top: 2px solid transparent ;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+    
+}
+.login-input input:is(:hover, :focus) {
+    border-bottom-color: #8c62f0;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+}
+.login-input i {
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    color: #7f7f7f;
+    font-size: 20px;
+    transform: translatey(-50%);
+}
+
+.login-input input:is(:hover, :focus) ~ i {
+    color: rgb(166, 75, 244);
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+}
+
+form a {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: right;
+    font-size: 14px;
+    color: #333333;
+    margin-top: 10px;
+}
+
+ button{
+    width: 100%;
+    height: 55px;
+    display: flex;
+    color: #ffffff;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border-radius: 50px;
+    background-image: url(../images/bg-01.webp);
+    background-size:cover;
+    border: none;
+    outline: none;
+    transition: all .4s ease-in;
+    top: 0;
+    left: -100%;
+   
+    /* background: -o-linear-gradient(right,#00dbde,#fc00ff,#00dbde,#fc00ff); */
+    /* background: -moz-linear-gradient(right,#00dbde,#fc00ff,#00dbde,#fc00ff); */
+}
+
+button:is(:hover, :focus) {
+    background: -webkit-linear-gradient(right,#00dbde,#fc00ff,#00dbde);
+    border: none;
+    
+    transition: all .4s ;
+}
+
+.signup {
+    display: block;
+    width: 100%;
+    height: 100px;
+    border: none;
+    outline: none;
+}
+
+.signup span{
+    display: flex;
+    font-size: 14px;
+    line-height: 21px;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+}
+a.btn {
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    line-height: 34px;
+}
+.signup .btn:is(:hover, :focus){
+    border: none ;
+    outline: none;
+    color: rgb(166, 75, 244);
+    transition: all .4s;
+   
+
+}
