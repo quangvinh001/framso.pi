@@ -7,6 +7,7 @@ html {
     box-sizing: border-box;
     font-size: 62.5%;
     font-family: "Poppins", sans-serif;
+    
 }
 
 body{
@@ -22,7 +23,7 @@ body{
 }
 
 .login {
-    padding: 65px 55px;
+    padding: 50px 55px;
     background-color: #ffffff ;
     width: 100%;
     max-width: 500px;
@@ -30,12 +31,14 @@ body{
 }
 
 .login-top{
-    font-size: 39px ;
+    font-size: 39px;
     text-align: center;
     color: #333333;
-    margin-bottom: 49px;
-    line-height: 40px;
+    margin-bottom: 30px;
+    /* line-height: 22px; */
+    padding: 10px;
     font-weight: bold;
+    margin-top: 40px;
 }
 .login-label{
     font-size: 18px ;
@@ -44,6 +47,7 @@ body{
     padding-right: 7px;
     padding-top: 10px;
     line-height: 20px;
+    margin-top: 15px;
 }
 
 .login-input{
@@ -59,7 +63,7 @@ body{
     width: 100%;
     font-size: 20px;
     padding: 0 7px 0 43px;
-    border-radius: 15px;
+    border-radius: 5px;
     /* line-height: 1.2; */
     border: none;
     outline: none;
@@ -114,7 +118,7 @@ form a {
     align-items: center;
     justify-content: center;
     font-size: 20px;
-    border-radius: 50px;
+    border-radius: 100px;
     background-image: url(../images/bg-01.webp);
     background-size:cover;
     border: none;
@@ -137,7 +141,7 @@ button:is(:hover, :focus) {
 .signup {
     display: block;
     width: 100%;
-    height: 100px;
+    height: 70px;
     border: none;
     outline: none;
 }
@@ -163,6 +167,26 @@ a.btn {
     outline: none;
     color: rgb(166, 75, 244);
     transition: all .4s;
-   
+}
 
+.ermsg{
+    position: absolute;
+    color: red;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 7px;
+    padding-top: 2px;
+}
+
+.alert-danger{
+    height: 55px;
+    font-size: 17px;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 40px; */
+    top: 55px;
+    width: 55vh;
+    padding-left: 30px;
 }

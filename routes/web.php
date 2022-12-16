@@ -41,8 +41,10 @@ Route::resource('pets', PetController::class);
 Route::resource('products', ProductController::class);
 Route::resource('vacxins', VacxinController::class);
 Route::resource('users', UserController::class);
-Route::get('/', [AdminController::class, 'getLoginadmin'])->name('getLoginadmin');
-Route::post('/', [AdminController::class, 'postLoginadmin'])->name('postLoginadmin');
+Route::get('/login', [AdminController::class, 'getLoginadmin'])->name('getLoginadmin');
+Route::post('/login', [AdminController::class, 'postLoginadmin'])->name('postLoginadmin');
+Route::get('/register', [AdminController::class, 'getRegisteradmin'])->name('getRegisteradmin');
+Route::post('/register', [AdminController::class, 'postRegisteradmin'])->name('postRegisteradmin');
 
 
 // Route::prefix('admin')->group(function () {

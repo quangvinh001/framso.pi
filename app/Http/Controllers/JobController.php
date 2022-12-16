@@ -17,7 +17,7 @@ class JobController extends Controller
     {
         $title = "JOB";
         $jobs= Job::all();
-        dd($jobs);
+        // dd($jobs);
         return view('admin.jobs.job', compact('jobs', 'title'));
     }
 

@@ -360,6 +360,9 @@ nav.close ~ .dashboard .top{
     white-space: nowrap;
     color: var(--text-color);
 }
+.container-fluid{
+    margin-top: 100px;
+}
 
 @media (max-width: 1000px) {
     nav{
@@ -455,4 +458,8 @@ nav.close ~ .dashboard .top{
         left: 0;
         width: 100%;
     }
+}
+
+ol, ul {
+    padding-left: 0px;
 }
