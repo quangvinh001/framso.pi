@@ -36,11 +36,13 @@ class AdminController extends Controller
          $this->validate(
              $req,
              [
-                 'email' => 'required|email|unique:users,email',
-                 'email' => 'required|/^[^ ]+@[^ ]+\.[a-z]{2,3}$/',
+                 'email' => 'required|email|unique:email',
+                 'email' => 'required',
                  'password' => 'required|min:6|max:20',
                  'name' => 'required',
-                 'repassword' => 'required|same:password'
+                 'repassword' => 'required|same:password',
+                 'phone' => 'required',
+                 'adrress' => 'required'
              ],
              [
                  'email.required' => 'Vui lòng nhập email',
@@ -81,7 +83,7 @@ class AdminController extends Controller
         $credentials=['email'=>$req->email,'password'=>$req->password];
 
         if(Auth::attempt($credentials)){//The attempt method will return true if authentication was successful. Otherwise, false will be returned.
-            return redirect('/admins.index')->with(['flag'=>'alert','message'=>'Đăng nhập thành công']);
+            return redirect('/admins')->with(['flag'=>'alert','message'=>'Đăng nhập thành công']);
         }
         else{
             return redirect()->back()->with(['flag'=>'danger','message'=>'Đăng nhập không thành công']);
