@@ -30,11 +30,7 @@
 
 <body>
     <div class="container">
-        @if (session()->has('success'))
-            <div class="alert alert-danger text-center">
-                {{ session('success') }}
-            </div>
-        @elseif(session('success'))
+        @if(session('success'))
             <div class="alert alert-success ">
                 {{ session('success') }}
             </div>

@@ -82,6 +82,8 @@ class VacxinController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vacxins = Vacxin::find($id);
+        $vacxins->delete();
+        return redirect()->route('vacxin.index')->with('success', 'Bạn đã xóa thành công');
     }
 }

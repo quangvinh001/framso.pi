@@ -5,15 +5,15 @@
   box-sizing: border-box;
   font-family: 'Poppins',sans-serif;
 }
-body{
+/* body{
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
-}
-.container{
+} */
+.modal-body {
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -22,12 +22,12 @@ body{
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
   
 }
-.container .title{
+.modal-body .title{
   font-size: 25px;
   font-weight: 500;
   position: relative;
 }
-.container .title::before{
+.modal-body .title::before{
   content: "";
   position: absolute;
   left: 0;
@@ -116,11 +116,11 @@ form .input-box span.details{
    letter-spacing: 1px;
    cursor: pointer;
    transition: all 0.3s ease;
-   background: linear-gradient(135deg, #656149, #67af48);
+   background: #34B982;
  }
  form .button input:hover{
   /* transform: scale(0.99); */
-  background: linear-gradient(135deg, #3c444a, #2fa255);
+  background: #0E4F55;
   }
  @media(max-width: 584px){
  .container{

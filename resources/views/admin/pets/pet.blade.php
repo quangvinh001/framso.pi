@@ -10,11 +10,13 @@
             </div>
         @endif
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Vật Nuôi</h1>
+            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#adduser">
+                <i class="uil uil-plus"></i> THÊM VẬT NUÔI
+            </button>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    petlist
+                  PET
                 </div>
                 <div class="card-body">
                     <table class="table">

@@ -1,7 +1,7 @@
 <nav>
     <div class="logo-name">
         <div class="logo-image">
-            <img src="../images/bg-01.webp" alt="">
+            <img src="{{asset('/build/images/organicfarmhome.svg')}}" alt="">
         </div>
 
         <span class="logo_name">Livestock farms</span>
