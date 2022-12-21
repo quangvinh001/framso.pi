@@ -5,15 +5,15 @@
   box-sizing: border-box;
   font-family: 'Poppins',sans-serif;
 }
-/* body{
+body{
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
-} */
-.modal-body {
+}
+.container {
   max-width: 700px;
   width: 100%;
   background-color: #fff;
@@ -22,12 +22,12 @@
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
   
 }
-.modal-body .title{
+.container .title{
   font-size: 25px;
   font-weight: 500;
   position: relative;
 }
-.modal-body .title::before{
+.container .title::before{
   content: "";
   position: absolute;
   left: 0;

@@ -15,7 +15,7 @@ class JobController extends Controller
     public $data = [];
     public function index()
     {
-        $title = "JOB";
+        $title = "CÔNG VIỆC";
         $jobs= Job::all();
         // dd($jobs);
         return view('admin.jobs.job', compact('jobs', 'title'));

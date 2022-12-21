@@ -14,7 +14,7 @@ class PetController extends Controller
      */
     public function index()
     {
-        $title = "PET";
+        $title = "VẬT NUÔI";
         $pets= Pet::all();
         // dd($bills);
         return view('admin.pets.pet', compact('pets', 'title'));

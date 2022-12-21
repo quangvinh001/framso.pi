@@ -14,7 +14,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $title = "FOOD";
+        $title = "THỨC ĂN";
         $foods = Food::all();
         return view('admin.foods.food', compact('foods', 'title'));
     }

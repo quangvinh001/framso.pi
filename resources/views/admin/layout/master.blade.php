@@ -14,8 +14,10 @@
 
     {{-- <link rel="stylesheet" href="/build/css/style.css"> --}}
     <link rel="stylesheet" href="{{ asset('build/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('build/css/style1.css') }}">
-    
+    {{-- <link rel="stylesheet" href="{{ asset('build/css/style1.css') }}"> --}}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
 
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -38,10 +40,9 @@
         @yield('content')
     </section>
     @include('admin.layout.footer')
+    @yield('js')
     {{-- <script src="/build/js/script.js"></script> --}}
-
 </body>
-@yield('js')
 <script src="{{ asset('build/js/script.js') }}"></script>
 
 </html>

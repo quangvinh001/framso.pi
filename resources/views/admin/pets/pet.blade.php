@@ -10,13 +10,13 @@
             </div>
         @endif
         <div class="container-fluid px-4">
-            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#adduser">
-                <i class="uil uil-plus"></i> THÊM VẬT NUÔI
+            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#add-pet">
+                <i class="uil uil-plus"></i> THÊM {{$title}}
             </button>
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                  PET
+                    <i class="fa fa-paw" aria-hidden="true"></i>
+                    {{$title}}
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -49,14 +49,6 @@
                                             <button name="delete" class="btn btn-danger" type="submit"><i
                                                     class="fas fa-trash"></i></button>
                                 </form>
-                                </td>
-                                <td>
-                                    <!-- <form action="{{ route('pets.destroy', ['pet' => $pet->id]) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" value="xoa" />
-                    </form> -->
-
                                 </td>
                                 </tr>
                             @endforeach

@@ -41,7 +41,7 @@
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">Username</span>
-                        <input name="name" type="text" placeholder="Enter your name">
+                        <input name="name" type="text" placeholder="Enter your name" value="{{old('name')}}">
                         @error('name')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror
@@ -49,7 +49,7 @@
 
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input name="email" type="text" placeholder="Enter your email">
+                        <input name="email" type="text" placeholder="Enter your email" {{old('email')}}>
                         @error('email')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror
@@ -57,7 +57,7 @@
 
                     <div class="input-box">
                         <span class="details">Phone Number</span>
-                        <input name="phone" type="text" placeholder="Enter your phone number">
+                        <input name="phone" type="text" placeholder="Enter your phone number" {{old('phone')}}>
                         @error('phone')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror
@@ -65,7 +65,7 @@
 
                     <div class="input-box">
                         <span class="details">Address</span>
-                        <input name="adrress" type="text" placeholder="Enter your adrress">
+                        <input name="adrress" type="text" placeholder="Enter your adrress" {{old('adrress')}}>
                         @error('adrress')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror
@@ -73,7 +73,7 @@
 
                     <div class="input-box">
                         <span class="details">Password</span>
-                        <input name="password" type="password" placeholder="Enter your password">
+                        <input name="password" type="password" placeholder="Enter your password" {{old('password')}}>
                         @error('password')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror

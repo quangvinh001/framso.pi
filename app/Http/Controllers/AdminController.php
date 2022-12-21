@@ -16,6 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $key = 1;
         $title = "DASHBOARD";
         $users=User::all();
         return view('admin.dashboard', compact('users','title'));
@@ -36,13 +37,12 @@ class AdminController extends Controller
          $this->validate(
              $req,
              [
-                 'email' => 'required|email|unique:email',
-                 'email' => 'required',
+                 'email' => 'required|email',
                  'password' => 'required|min:6|max:20',
                  'name' => 'required',
                  'repassword' => 'required|same:password',
                  'phone' => 'required',
-                 'adrress' => 'required'
+                 'address' => 'required'
              ],
              [
                  'email.required' => 'Vui lòng nhập email',
@@ -64,7 +64,7 @@ class AdminController extends Controller
          $user->save();
          return redirect()->back()->with('success', 'Tạo tài khoản thành công');
      }
- 
+
      public function postLoginadmin(Request $req){
         
         $this->validate($req,
