@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PetController extends Controller
 {
@@ -60,7 +61,9 @@ class PetController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.pets.pet-edit', [
+            'pet' => Pet::firstWhere('id', $id)
+        ]);
     }
 
     /**
@@ -72,7 +75,16 @@ class PetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pet = pet::find($id);
+        $pet->id_role = $request->id_role;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $pet->name = $request->name;
+        $pet->email = $request->email;
+        $pet->password = Hash::make($request->password);
+        $pet->phone = $request->phone;
+        $pet->address = $request->address;
+        $pet->save();
+
+        return redirect()->route('pets.index')->with('success', 'Bạn đã cập nhật thành công');
     }
 
     /**
@@ -83,6 +95,8 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pets = Pet::find($id);
+        $pets->delete();
+        return redirect()->route('pets.index')->with('success', 'Bạn đã xóa thành công');
     }
 }

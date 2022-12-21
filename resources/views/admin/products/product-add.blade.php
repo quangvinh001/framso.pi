@@ -12,7 +12,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="product-details">
                         <div class="input-box">
                             <span class="details">Tên Sản Phẩm</span>
-                            <input name="name" placeholder="Enter your name">
+                            <input name="name" placeholder="Enter your name" value="{{old('name')}}">
                             @error('name')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror

@@ -272,7 +272,7 @@
     </div>
 
     <!-- Modal -->
-    {{-- @include('admin.vacxins.vacxin-add') --}}
+    @include('admin.vacxins.vacxin-add')
 @endsection
 @section('js')
     <script>

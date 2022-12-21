@@ -88,6 +88,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        
         $user = User::find($id);
         $user->id_role = $request->id_role;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
         $user->name = $request->name;

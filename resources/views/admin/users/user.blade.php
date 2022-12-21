@@ -273,6 +273,7 @@
     </div>
 
     <!-- Modal -->
+    @include('admin.users.user-edit')
     @include('admin.users.user-add')
 @endsection
 @section('js')

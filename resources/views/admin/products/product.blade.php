@@ -273,7 +273,7 @@
     </div>
 
     <!-- Modal -->
-    {{-- @include('admin.products.product-add') --}}
+    @include('admin.products.product-add')
 @endsection
 @section('js')
     <script>

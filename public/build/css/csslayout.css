@@ -1,9 +1,4 @@
-@extends('admin.layout.master')
-@section('title')
-    {{ $title }}
-@endsection
-@section('css')
-    <style>
+
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
         * {
@@ -48,14 +43,14 @@
             background: linear-gradient(135deg, #71b7e6, #9b59b6);
         }
 
-        .content form .vacxin-details {
+        .content form .product-details {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             margin: 20px 0 12px 0;
         }
 
-        form .vacxin-details .input-box {
+        form .product-details .input-box {
             margin-bottom: 15px;
             width: calc(100% / 2 - 20px);
         }
@@ -67,7 +62,7 @@
             margin-bottom: 5px;
         }
 
-        .vacxin-details .input-box input {
+        .product-details .input-box input {
             height: 45px;
             width: 100%;
             outline: none;
@@ -79,8 +74,8 @@
             transition: all 0.3s ease;
         }
 
-        .vacxin-details .input-box input:focus,
-        .vacxin-details .input-box input:valid {
+        .product-details .input-box input:focus,
+        .product-details .input-box input:valid {
             border-color: #9b59b6;
         }
 
@@ -152,7 +147,7 @@
                 max-width: 100%;
             }
 
-            form .vacxin-details .input-box {
+            form .product-details .input-box {
                 margin-bottom: 15px;
                 width: 100%;
             }
@@ -161,12 +156,12 @@
                 width: 100%;
             }
 
-            .content form .vacxin-details {
+            .content form .product-details {
                 max-height: 300px;
                 overflow-y: scroll;
             }
 
-            .vacxin-details::-webkit-scrollbar {
+            .product-details::-webkit-scrollbar {
                 width: 5px;
             }
         }
@@ -203,76 +198,4 @@
             width: 55vh;
             padding-left: 30px;
         }
-    </style>
-@endsection
-@section('content')
-    <div class="container">
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-        <div class="container-fluid px-4">
-            <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#add-pet">
-                <i class="uil uil-plus"></i> THÊM {{ $title }}
-            </button>
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fa fa-paw" aria-hidden="true"></i>
-                    {{ $title }}
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Hình Ảnh</th>
-                                <th>Tên Vật Nuôi</th>
-                                <th>Số Lượng</th>
-                                <th>Giới Tính</th>
-                                <th>Lưu Ý</th>
-                            </tr>
-                        </thead>
 
-                        <tbody>
-                            @foreach ($pets as $pet)
-                                <form action="{{ route('pets.destroy', $pet['id']) }}" method="post">
-                                    @method('delete') <input name="_method" type="hidden" value="DELETE">
-                                    @csrf
-                                    <tr class="active">
-                                        <td><a href="pets/{{ $pet->id }}">{{ $pet->id }}</a></td>
-                                        <td><img src="/build/images/{{ $pet->image }}" alt=""
-                                                style="width: 120px;"></a></td>
-                                        <td>{{ $pet->name }}</td>
-                                        <td>{{ $pet->num }}</td>
-                                        <td>{{ $pet->gender }}</td>
-                                        <td>{{ $pet->note }}</td>
-                                        <td class="data-list"> 
-                                            {{-- <button  type="button" class="btn btn-success "
-                                            data-bs-toggle="modal" data-bs-target="#edit-product">
-                                            <i class="uil uil-edit"></i>
-                                        </button> --}}
-                                        <button type="button" class="btn btn-success" onclick="window.location='{{route('pets.edit', ['pet' => $pet->id])}}'"> <i class="uil uil-edit"></i></button>
-                                        <button name="delete" type="submit" class="btn btn-danger"> <i class="uil uil-trash-alt"></i></button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-
-                    </table>
-                    <!-- script ajax (javascript) có thể đặt ở trong cặp thẻ head hoặc body -->
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                    <script>
-                        $("document").ready(function() {
-                            $(".btn-danger").click(function() {
-                                return confirm("Bạn có thực sự muốn xóa?");
-                            });
-                        });
-                    </script>
-                      @include('admin.pets.pet-add')
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-@endsection
