@@ -486,7 +486,7 @@ ol, ul {
     transition: all 0.4s ease;
   }
  li:hover{
-    background: #1d1b31;
+    background: var(--panel-color);
   }
  li .iocn-link{
     display: flex;
@@ -501,7 +501,7 @@ ol, ul {
     min-width: 78px;
     text-align: center;
     line-height: 50px;
-    color: #fff;
+    color: var(--black-light-color);
     font-size: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -520,7 +520,7 @@ ol, ul {
  li a .link_name{
     font-size: 18px;
     font-weight: 400;
-    color: #fff;
+    color: var(--black-light-color);
     transition: all 0.4s ease;
   }
   .sidebar.close .nav-links li a .link_name{
@@ -528,16 +528,16 @@ ol, ul {
     pointer-events: none;
   }
  li .sub-menu{
-    padding: 6px 6px 14px 80px;
+    padding: 6px 6px 14px 50px;
     margin-top: -10px;
-    background: #1d1b31;
+    background: var(--panel-color);
     display: none;
   }
  li.showMenu .sub-menu{
     display: block;
   }
  li .sub-menu a{
-    color: #fff;
+    color: var(--black-light-color);
     font-size: 15px;
     padding: 5px 0;
     white-space: nowrap;
