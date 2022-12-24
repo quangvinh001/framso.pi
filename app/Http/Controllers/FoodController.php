@@ -16,7 +16,7 @@ class FoodController extends Controller
     {
         $title = "THỨC ĂN";
         $foods = Food::all();
-        return view('admin.foods.food', compact('foods', 'title'));
+        return view('admin.foods.food-list', compact('foods', 'title'));
     }
 
     /**
@@ -37,7 +37,15 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $foods = new Food();
+        $foods->id_role = 2;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $foods->name = $request->name;
+        $foods->email = $request->email;
+        // $foods->password = Hash::make($request->password);
+        $foods->phone = $request->phone;
+        $foods->address = $request->address;
+        $foods->save();
+        return redirect()->back()->with('success', 'Thêm thành công');
     }
 
     /**
@@ -59,7 +67,9 @@ class FoodController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "THỨC ĂN";
+        $foods = Food::firstWhere('id', $id);
+        return view('admin.foods.food-edit', compact('title', 'foods'));
     }
 
     /**
@@ -71,7 +81,16 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $foods = Food::find($id);
+        $foods->id_role = $request->id_role;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $foods->name = $request->name;
+        $foods->email = $request->email;
+        // $foods->password = Hash::make($request->password);
+        $foods->phone = $request->phone;
+        $foods->address = $request->address;
+        $foods->save();
+
+        return redirect()->route('foods.index')->with('success', 'Bạn đã cập nhật thành công');
     }
 
     /**
@@ -82,6 +101,8 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+         $foods = Food::find($id);
+        $foods->delete();
+        return redirect()->route('foods.index')->with('success', 'Bạn đã xóa thành công');
+}
 }

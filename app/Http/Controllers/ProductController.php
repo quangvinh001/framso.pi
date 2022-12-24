@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         $title = "SẢN PHẨM";
         $products = Product::all();
-        return view('admin.products.product', compact('products', 'title'));
+        return view('admin.products.product-list', compact('products', 'title'));
     }
 
     /**
@@ -37,7 +37,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $products = new Product();
+        $products->id_role = 2;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $products->name = $request->name;
+        $products->email = $request->email;
+        // $products->password = hash()::make($request->password);
+        $products->phone = $request->phone;
+        $products->address = $request->address;
+        $products->save();
+        return redirect()->back()->with('success', 'Thêm thành công');
     }
 
     /**
@@ -59,7 +67,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "SẢN PHẨM";
+        $products = Product::firstWhere('id', $id);
+        return view('admin.products.product-edit', compact('title', 'products'));
     }
 
     /**
@@ -71,7 +81,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $products = Product::find($id);
+        $products->id_role = $request->id_role;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $products->name = $request->name;
+        $products->email = $request->email;
+        // $products->password = Hash::make($request->password);
+        $products->phone = $request->phone;
+        $products->address = $request->address;
+        $products->save();
     }
 
     /**
@@ -82,6 +99,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $products = Product::find($id);
+        $products->delete();
+        return redirect()->route('products.index')->with('success', 'Bạn đã xóa thành công');
     }
 }

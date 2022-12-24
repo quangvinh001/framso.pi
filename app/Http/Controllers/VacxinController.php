@@ -16,7 +16,7 @@ class VacxinController extends Controller
     {
         $title = "VACXIN" ;
         $vacxins = Vacxin::all();
-        return view('admin.vacxins.vacxin', compact('vacxins', 'title'));
+        return view('admin.vacxins.vacxin-list', compact('vacxins', 'title'));
     }
 
     /**
@@ -37,7 +37,15 @@ class VacxinController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $vacxins = new Vacxin();
+        $vacxins->id_role = 2;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $vacxins->name = $request->name;
+        $vacxins->email = $request->email;
+        // $vacxins->password = Hash::make($request->password);
+        $vacxins->phone = $request->phone;
+        $vacxins->address = $request->address;
+        $vacxins->save();
+        return redirect()->back()->with('success', 'Thêm thành công');
     }
 
     /**
@@ -59,7 +67,9 @@ class VacxinController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = "VACXIN";
+        $vacxins = Vacxin::firstWhere('id', $id);
+        return view('admin.vacxins.vacxin-edit', compact('title', 'vacxins'));
     }
 
     /**
@@ -71,7 +81,14 @@ class VacxinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vacxins = Vacxin::find($id);
+        $vacxins->id_role = $request->id_role;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $vacxins->name = $request->name;
+        $vacxins->email = $request->email;
+        // $vacxins->password = Hash::make($request->password);
+        $vacxins->phone = $request->phone;
+        $vacxins->address = $request->address;
+        $vacxins->save();
     }
 
     /**

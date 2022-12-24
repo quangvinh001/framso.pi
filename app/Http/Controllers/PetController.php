@@ -39,7 +39,15 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $pets = new Pet();
+        $pets->id_role = 2;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $pets->name = $request->name;
+        $pets->email = $request->email;
+        // $pets->password = Hash::make($request->password);
+        $pets->phone = $request->phone;
+        $pets->address = $request->address;
+        $pets->save();
+        return redirect()->back()->with('success', 'Thêm thành công');
     }
 
     /**
