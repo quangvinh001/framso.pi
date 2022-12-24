@@ -14,13 +14,13 @@
         }
 
         /* body{
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      background: linear-gradient(135deg, #71b7e6, #9b59b6);
-    } */
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 10px;
+          background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        } */
         .modal-body {
             max-width: 700px;
             width: 100%;
@@ -48,14 +48,14 @@
             background: linear-gradient(135deg, #71b7e6, #9b59b6);
         }
 
-        .content form .job-details {
+        .content form .user-details {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             margin: 20px 0 12px 0;
         }
 
-        form .job-details .input-box {
+        form .user-details .input-box {
             margin-bottom: 15px;
             width: calc(100% / 2 - 20px);
         }
@@ -67,7 +67,7 @@
             margin-bottom: 5px;
         }
 
-        .job-details .input-box input {
+        .user-details .input-box input {
             height: 45px;
             width: 100%;
             outline: none;
@@ -79,8 +79,8 @@
             transition: all 0.3s ease;
         }
 
-        .job-details .input-box input:focus,
-        .job-details .input-box input:valid {
+        .user-details .input-box input:focus,
+        .user-details .input-box input:valid {
             border-color: #9b59b6;
         }
 
@@ -152,7 +152,7 @@
                 max-width: 100%;
             }
 
-            form .job-details .input-box {
+            form .user-details .input-box {
                 margin-bottom: 15px;
                 width: 100%;
             }
@@ -161,12 +161,12 @@
                 width: 100%;
             }
 
-            .content form .job-details {
+            .content form .user-details {
                 max-height: 300px;
                 overflow-y: scroll;
             }
 
-            .job-details::-webkit-scrollbar {
+            .user-details::-webkit-scrollbar {
                 width: 5px;
             }
         }

@@ -25,6 +25,23 @@
                     <i class="fa fa-cube" aria-hidden="true"></i>
                     <span class="link-name">Kho Hàng</span>
                 </a></li>
+                
+                <li>
+                    <div class="iocn-link">
+                      <a href="#">
+                        <i class='bx bx-plug' ></i>
+                        <span for="pl" class="link_name">Plugins</span>
+                      </a>
+                      <i id="pl" class='bx bxs-chevron-down arrow' ></i>
+                    </div>
+                    <ul class="sub-menu">
+                      <li><a class="link_name" href="#">Plugins</a></li>
+                      <li><a href="#">UI Face</a></li>
+                      <li><a href="#">Pigments</a></li>
+                      <li><a href="#">Box Icons</a></li>
+                    </ul>
+                  </li>
+
             <li><a href="#">
                     <i class="uil uil-receipt-alt"></i>
                     <span class="link-name">Nhập hàng</span>

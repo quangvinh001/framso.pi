@@ -4,11 +4,11 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-content">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm {{$title}}</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="pbutton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="content">
-                <form action="{{ route('users.store') }} " id="add-user-form" method="POST">
+                <form action="{{ route('vacxins.store') }} " id="add-vacxin-form" method="POST">
                     <div class="user-details">
                         <div class="input-box">
                             <span class="details">Username</span>

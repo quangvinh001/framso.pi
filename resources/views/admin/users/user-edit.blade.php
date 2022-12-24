@@ -1,4 +1,4 @@
-<div class="modal fade" id="edit-user" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="edit-user-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
 aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
@@ -8,7 +8,7 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
         </div>
         <div class="modal-body">
             <div class="content">
-                <form action="{{ route('users.update', ['user' => $user->id] ) }} " id="add-user-form" method="post">
+                <form action="{{ route('users.update', ['user' => $user->id] ) }} " id="edit-user-form" method="post">
                     @method('put')
                     <div class="user-details">
                         <div class="input-box">
@@ -48,8 +48,8 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         </div>
                         <div class="input-box">
                             <span class="details">Role</span>
-                            <input name="role" type="text" placeholder="Confirm your Level"  value="{{$user->id_role}}"  >
-                            @error('role')
+                            <input name="id_role" type="text" placeholder="Confirm your Level"  value="{{$user->id_role}}"  >
+                            @error('id_role')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
@@ -61,7 +61,6 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">SỬA {{$title}}</button>
         </div>
-        </form>
     </div>
 </div>
 </div>

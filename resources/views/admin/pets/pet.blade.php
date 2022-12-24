@@ -14,13 +14,13 @@
         }
 
         /* body{
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      background: linear-gradient(135deg, #71b7e6, #9b59b6);
-    } */
+              height: 100vh;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 10px;
+              background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            } */
         .modal-body {
             max-width: 700px;
             width: 100%;
@@ -48,14 +48,14 @@
             background: linear-gradient(135deg, #71b7e6, #9b59b6);
         }
 
-        .content form .vacxin-details {
+        .content form .user-details {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             margin: 20px 0 12px 0;
         }
 
-        form .vacxin-details .input-box {
+        form .user-details .input-box {
             margin-bottom: 15px;
             width: calc(100% / 2 - 20px);
         }
@@ -67,7 +67,7 @@
             margin-bottom: 5px;
         }
 
-        .vacxin-details .input-box input {
+        .user-details .input-box input {
             height: 45px;
             width: 100%;
             outline: none;
@@ -79,8 +79,8 @@
             transition: all 0.3s ease;
         }
 
-        .vacxin-details .input-box input:focus,
-        .vacxin-details .input-box input:valid {
+        .user-details .input-box input:focus,
+        .user-details .input-box input:valid {
             border-color: #9b59b6;
         }
 
@@ -152,7 +152,7 @@
                 max-width: 100%;
             }
 
-            form .vacxin-details .input-box {
+            form .user-details .input-box {
                 margin-bottom: 15px;
                 width: 100%;
             }
@@ -161,12 +161,12 @@
                 width: 100%;
             }
 
-            .content form .vacxin-details {
+            .content form .user-details {
                 max-height: 300px;
                 overflow-y: scroll;
             }
 
-            .vacxin-details::-webkit-scrollbar {
+            .user-details::-webkit-scrollbar {
                 width: 5px;
             }
         }
@@ -235,7 +235,7 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($pets as $pet)
+                            @foreach ($pet as $pet)
                                 <form action="{{ route('pets.destroy', $pet['id']) }}" method="post">
                                     @method('delete') <input name="_method" type="hidden" value="DELETE">
                                     @csrf
@@ -247,15 +247,19 @@
                                         <td>{{ $pet->num }}</td>
                                         <td>{{ $pet->gender }}</td>
                                         <td>{{ $pet->note }}</td>
-                                        <td class="data-list"> 
+                                        <td class="data-list">
                                             {{-- <button  type="button" class="btn btn-success "
-                                            data-bs-toggle="modal" data-bs-target="#edit-product">
+                                            data-bs-toggle="modal" data-bs-target="#edit-pet">
                                             <i class="uil uil-edit"></i>
                                         </button> --}}
-                                        <button type="button" class="btn btn-success" onclick="window.location='{{route('pets.edit', ['pet' => $pet->id])}}'"> <i class="uil uil-edit"></i></button>
-                                        <button name="delete" type="submit" class="btn btn-danger"> <i class="uil uil-trash-alt"></i></button>
-                                    </td>
-                                </tr>
+                                            <button data-url="{{ route('pets.update', $pet->id) }}"​
+                                                type="button" data-target="#edit-pet" data-toggle="modal"
+                                                class="btn btn-warning btn-edit">Edit</button>
+                                            <button name="delete" type="submit" class="btn btn-danger"> <i
+                                                    class="uil uil-trash-alt"></i></button>
+                                                    
+                                        </td>
+                                    </tr>
                             @endforeach
                         </tbody>
 
@@ -268,11 +272,81 @@
                                 return confirm("Bạn có thực sự muốn xóa?");
                             });
                         });
+
+
                     </script>
-                      @include('admin.pets.pet-add')
+
                 </div>
             </div>
         </div>
     </div>
     </div>
+    {{-- <div class="modal fade" id="edit-pet" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm {{ $title }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="content">
+                        <form action="{{ route('pets.update', $pet['id']) }} " id="add-user-form" method="POST">
+                            <div class="user-details">
+                                <div class="input-box">
+                                    <span class="details">Username</span>
+                                    <input name="name" placeholder="Enter your name">
+                                    @error('name')
+                                        <span class="ermsg">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Email</span>
+                                    <input name="email" type="text" placeholder="Enter your email">
+                                    @error('email')
+                                        <span class="ermsg">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Phone Number</span>
+                                    <input name="phone" type="text" placeholder="Enter your phone number">
+                                    @error('phone')
+                                        <span class="ermsg">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Address</span>
+                                    <input name="address" type="text" placeholder="Enter your adrress">
+                                    @error('address')
+                                        <span class="ermsg">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Password</span>
+                                    <input name="password" type="password" placeholder="Enter your password">
+                                    @error('password')
+                                        <span class="ermsg">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-box">
+                                    <span class="details">Confirm Password</span>
+                                    <input name="repassword" type="password" placeholder="Confirm your password">
+                                    @error('repassword')
+                                        <span class="ermsg">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            @csrf
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Thêm {{ $title }}</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div> --}}
+
 @endsection
+

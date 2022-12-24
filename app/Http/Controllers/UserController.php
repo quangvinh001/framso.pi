@@ -22,8 +22,8 @@ class UserController extends Controller
     {
         $stt = 1;
         $title = "NGƯỜI DÙNG";
-        $users = User::all();
-        return view('admin.users.user', compact('users', 'title', 'stt'));
+        $user = User::orderBy('id','desc')->get();
+        return view('admin.users.user-list', compact('user', 'title', 'stt'));
     }
 
     /**
@@ -44,6 +44,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        
         $user = new User();
         $user->id_role = 2;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
         $user->name = $request->name;
@@ -74,9 +75,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.users.user-edit', [
-            'user' => User::firstWhere('id', $id)
-        ]);
+        $title = "NGƯỜI DÙNG";
+        $user = User::firstWhere('id', $id);
+        return view('admin.users.user-edit', compact('title', 'user'));
     }
 
     /**
