@@ -18,7 +18,7 @@ class PetController extends Controller
         $title = "VẬT NUÔI";
         $pet= Pet::all();
         // dd($bills);
-        return view('admin.pets.pet', compact('pet', 'title'));
+        return view('admin.pets.pet-list', compact('pet', 'title'));
     }
 
     /**

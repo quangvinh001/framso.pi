@@ -12,44 +12,44 @@
                     <form action="{{ route('pets.update', $pet['id']) }} " id="add-user-form" method="POST">
                         <div class="user-details">
                             <div class="input-box">
-                                <span class="details">Username</span>
-                                <input name="name" placeholder="Enter your name">
+                                <span class="details">Tên Vật Nuôi</span>
+                                <input name="name" placeholder="Nhập Tên Vật Nuôi">
                                 @error('name')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
-                                <span class="details">Email</span>
-                                <input name="email" type="text" placeholder="Enter your email">
-                                @error('email')
+                                <span class="details">Số Lượng</span>
+                                <input name="num" type="text" placeholder="Vui Lòng Nhập Số Lượng">
+                                @error('num')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
-                                <span class="details">Phone Number</span>
-                                <input name="phone" type="text" placeholder="Enter your phone number">
-                                @error('phone')
+                                <span class="details">Đơn Vị</span>
+                                <input name="unit" type="text" placeholder="Vui Lòng Nhập Đợn Vị">
+                                @error('unit')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
-                                <span class="details">Address</span>
-                                <input name="address" type="text" placeholder="Enter your adrress">
-                                @error('address')
+                                <span class="details">Giới Tinh</span>
+                                <input name="gender" type="text" placeholder="Vui Lòng Nhập Giới Tính">
+                                @error('gender')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
-                                <span class="details">Password</span>
-                                <input name="password" type="password" placeholder="Enter your password">
-                                @error('password')
+                                <span class="details"> Hình Ảnh</span>
+                                <input name="image" type="text" placeholder="Vui Lòng Thêm Hình Ảnh">
+                                @error('image')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
-                                <span class="details">Confirm Password</span>
-                                <input name="repassword" type="password" placeholder="Confirm your password">
-                                @error('repassword')
+                                <span class="details"> Giới Thiệu</span>
+                                <input name="note" type="text" placeholder="Giới thiệu vật nuôi">
+                                @error('note')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>

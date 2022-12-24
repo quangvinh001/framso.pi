@@ -12,7 +12,7 @@
   left: 0;
   height: 100%;
   width: 260px;
-  background: #11101d;
+  background: #ffffff;
   z-index: 100;
   transition: all 0.5s ease;
 }
@@ -27,7 +27,7 @@
 }
 .sidebar .logo-details i{
   font-size: 30px;
-  color: #fff;
+  color: #707070;
   height: 50px;
   min-width: 78px;
   text-align: center;
@@ -35,7 +35,7 @@
 }
 .sidebar .logo-details .logo_name{
   font-size: 22px;
-  color: #fff;
+  color: #707070;
   font-weight: 600;
   transition: 0.3s ease;
   transition-delay: 0.1s;
@@ -62,7 +62,7 @@
   transition: all 0.4s ease;
 }
 .sidebar .nav-links li:hover{
-  background: #1d1b31;
+  background: #ffffff;
 }
 .sidebar .nav-links li .iocn-link{
   display: flex;
@@ -77,7 +77,7 @@
   min-width: 78px;
   text-align: center;
   line-height: 50px;
-  color: #fff;
+  color: #707070;
   font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -96,7 +96,7 @@
 .sidebar .nav-links li a .link_name{
   font-size: 18px;
   font-weight: 400;
-  color: #fff;
+  color: #707070;
   transition: all 0.4s ease;
 }
 .sidebar.close .nav-links li a .link_name{
@@ -106,14 +106,14 @@
 .sidebar .nav-links li .sub-menu{
   padding: 6px 6px 14px 80px;
   margin-top: -10px;
-  background: #1d1b31;
+  background: #de2525;
   display: none;
 }
 .sidebar .nav-links li.showMenu .sub-menu{
   display: block;
 }
 .sidebar .nav-links li .sub-menu a{
-  color: #fff;
+  color: #707070;
   font-size: 15px;
   padding: 5px 0;
   white-space: nowrap;
@@ -167,7 +167,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #1d1b31;
+  background: #707070;
   padding: 12px 0;
   transition: all 0.5s ease;
 }

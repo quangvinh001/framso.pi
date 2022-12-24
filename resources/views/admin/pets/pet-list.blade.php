@@ -48,14 +48,14 @@
             background: linear-gradient(135deg, #71b7e6, #9b59b6);
         }
 
-        .content form .user-details {
+        .content form .pet-details {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             margin: 20px 0 12px 0;
         }
 
-        form .user-details .input-box {
+        form .pet-details .input-box {
             margin-bottom: 15px;
             width: calc(100% / 2 - 20px);
         }
@@ -67,7 +67,7 @@
             margin-bottom: 5px;
         }
 
-        .user-details .input-box input {
+        .pet-details .input-box input {
             height: 45px;
             width: 100%;
             outline: none;
@@ -79,8 +79,8 @@
             transition: all 0.3s ease;
         }
 
-        .user-details .input-box input:focus,
-        .user-details .input-box input:valid {
+        .pet-details .input-box input:focus,
+        .pet-details .input-box input:valid {
             border-color: #9b59b6;
         }
 
@@ -152,7 +152,7 @@
                 max-width: 100%;
             }
 
-            form .user-details .input-box {
+            form .pet-details .input-box {
                 margin-bottom: 15px;
                 width: 100%;
             }
@@ -161,12 +161,12 @@
                 width: 100%;
             }
 
-            .content form .user-details {
+            .content form .pet-details {
                 max-height: 300px;
                 overflow-y: scroll;
             }
 
-            .user-details::-webkit-scrollbar {
+            .pet-details::-webkit-scrollbar {
                 width: 5px;
             }
         }
@@ -213,16 +213,16 @@
             </div>
         @endif
         <div class="container-fluid px-4">
-            <div class="add-user">
+            <div class="add-pet">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#adduser">
+                <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#add-pet-modal">
                     <i class="uil uil-plus"></i> THÊM
                     {{ $title }}
                 </button>
             </div>
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="uil uil-user"></i>
+                    <i class="uil uil-pet"></i>
                     <span class="text">{{ $title }}</span>
                 </div>
                 <div class="activity-data">
@@ -230,35 +230,35 @@
                         <thead>
                             <tr>
                                 <th class="data-title">ID</th>
-                                <th class="data-title">Fullname</th>
-                                <th class="data-title">Email</th>
-                                <th class="data-title">Password</th>
-                                <th class="data-title">Phone</th>
-                                <th class="data-title">Address</th>
-                                <th class="data-title">Level</th>
+                                <th class="data-title">Hình Ảnh</th>
+                                <th class="data-title">Tên Vật Nuôi</th>
+                                <th class="data-title">Số Lượng</th>
+                                <th class="data-title">Đơn Vị</th>
+                                <th class="data-title">Giới Tính</th>
+                                <th class="data-title">Giới Thiệu</th>
                                 <th class="data-title">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user as $user)
-                                <form action="{{ route('users.destroy', ['user' => $user->id]) }}" method="post">
+                            @foreach ($pet as $pet)
+                                <form action="{{ route('pets.destroy', ['pet' => $pet->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <tr class="activity-data">
-                                        <td class="data-list"><a href="users/{{ $user->id }}">{{ $stt++ }}</a>
+                                        <td class="data-list"><a href="pets/{{ $pet->id }}">{{ $pet->id }}</a>
                                         </td>
-                                        <td class="data-list">{{ $user->name }}</td>
-                                        <td class="data-list">{{ $user->email }}</td>
-                                        <td class="data-list">****************</td>
-                                        <td class="data-list">{{ $user->phone }}</td>
-                                        <td class="data-list">{{ $user->address }}</td>
-                                        <td class="data-list">{{ $user->id_role }}</td>
+                                        <td class="data-list"><img src="/build/images/{{ $pet->image }}" alt="" width="100px"></td>
+                                        <td class="data-list">{{ $pet->name }}</td>
+                                        <td class="data-list">{{ $pet->num }}</td>
+                                        <td class="data-list">{{ $pet->unit }}</td>
+                                        <td class="data-list">{{ $pet->gender }}</td>
+                                        <td class="data-list">{{ $pet->note }}</td>
                                         <td class="data-list">
-                                            <button data-url="{{ route('users.edit', $user->id) }}" type="button" class="btn btn-success js-edit-user">
+                                            <button data-url="{{ route('pets.edit', $pet->id) }}" type="button" class="btn btn-success js-edit-pet">
                                                 <i class="uil uil-edit"></i>
                                             </button>
-                                            {{-- <button data-url="{{ route('users.edit', $user->id) }}"​ type="button"
-                                                data-target="#edit-user" data-toggle="modal"
+                                            {{-- <button data-url="{{ route('pets.edit', $pet->id) }}"​ type="button"
+                                                data-target="#edit-pet" data-toggle="modal"
                                                 class="btn btn-warning btn-edit"> <i class="uil uil-edit"></i></button> --}}
                                             <button name="delete" type="submit" class="btn btn-danger"> <i
                                                     class="uil uil-trash-alt"></i></button>
@@ -276,13 +276,13 @@
     </div>
 
     <!-- Modal -->
-    @include('admin.users.user-add')
+    @include('admin.pets.pet-add')
 @endsection
 @section('js')
     <script>
         // add
         $("document").ready(function() {
-            $('#add-user-form').validate({
+            $('#add-pet-form').validate({
                 debug: false,
                 errorClass: "ermsg",
                 errorElement: "span",
@@ -290,23 +290,22 @@
                     name: {
                         required: true,
                     },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    phone: {
+                    num: {
                         required: true,
                     },
-                    address: {
+                    unit: {
                         required: true,
                     },
-                    password: {
+                    gender: {
+                        required: true,
+                    },
+                    image: {
                         required: true,
                         minlength: 6,
                         maxlength: 20
                     },
-                    repassword: {
-                        equalTo: '[name=password]'
+                    note: {
+                        required: true
                     }
                 },
                 messages: {
@@ -343,22 +342,22 @@
     </script>
     <script>
         $(document).ready(function () {
-            $('body').on("click", ".js-edit-user", function () {
+            $('body').on("click", ".js-edit-pet", function () {
                 var $btn = $(this);
                 var urlModal = $btn.data('url');
                 $.get(urlModal, function (result) {
-                    var $modal = $('#edit-user-modal');
+                    var $modal = $('#edit-pet-modal');
                     if ($modal.length) {
                         $modal.replaceWith(result);
                     } else {
                         $('body').append(result);
-                        $modal = $('#edit-user-modal');
+                        $modal = $('#edit-pet-modal');
                     }
-                    new bootstrap.Modal('#edit-user-modal').show();
+                    new bootstrap.Modal('#edit-pet-modal').show();
                     $modal.on('click', 'button[type=submit]', function () {
                         $modal.find('form')[0].submit();
                     });
-                    $('#edit-user-modal form').validate({
+                    $('#edit-pet-modal form').validate({
                         debug: false,
                         errorClass: "ermsg",
                         errorElement: "span",

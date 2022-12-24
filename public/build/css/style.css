@@ -485,9 +485,9 @@ ol, ul {
     list-style: none;
     transition: all 0.4s ease;
   }
- /* li:hover{
+ li:hover{
     background: #1d1b31;
-  } */
+  }
  li .iocn-link{
     display: flex;
     align-items: center;

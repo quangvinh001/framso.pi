@@ -13,42 +13,42 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="user-details">
                         <div class="input-box">
                             <span class="details">Username</span>
-                            <input name="name" placeholder="Enter your name" value="{{ $user->name}}">
+                            <input name="name" placeholder="Enter your name" value="{{ old('username') ?? $user->name  }}">
                             @error('name')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
                             <span class="details">Email</span>
-                            <input name="email" type="text" placeholder="Enter your email" value="{{$user->email}}">
+                            <input name="email" type="text" placeholder="Enter your email" value="{{old('email') ?? $user->email}}">
                             @error('email')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
                             <span class="details">Phone Number</span>
-                            <input name="phone" type="text" placeholder="Enter your phone number" value="{{ $user->phone}}">
+                            <input name="phone" type="text" placeholder="Enter your phone number" value="{{ old('phone') ?? $user->phone}}">
                             @error('phone')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
                             <span class="details">Address</span>
-                            <input name="address" type="text" placeholder="Enter your adrress" value="{{ $user->address}}">
+                            <input name="address" type="text" placeholder="Enter your adrress" value="{{ old('address') ?? $user->address}}">
                             @error('address')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
                             <span class="details">Password</span>
-                            <input name="password" type="password" placeholder="Enter your password" value="{{$user->password}}">
+                            <input name="password" type="password" placeholder="Enter your password" value="{{ $user->password}}">
                             @error('password')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
                             <span class="details">Role</span>
-                            <input name="id_role" type="text" placeholder="Confirm your Level"  value="{{$user->id_role}}"  >
+                            <input name="id_role" type="text" placeholder="Confirm your Level"  value="{{old('id_role') ?? $user->id_role}}"  >
                             @error('id_role')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
