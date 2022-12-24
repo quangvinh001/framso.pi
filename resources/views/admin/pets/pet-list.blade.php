@@ -37,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($pet as $pet)
+                            @foreach ($pets as $pet)
                                 <form action="{{ route('pets.destroy', ['pet' => $pet->id]) }}" method="post">
                                     @csrf
                                     @method('delete')

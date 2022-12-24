@@ -38,12 +38,12 @@ class VacxinController extends Controller
     public function store(Request $request)
     {
          $vacxins = new Vacxin();
-        $vacxins->id_role = 2;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
-        $vacxins->name = $request->name;
-        $vacxins->email = $request->email;
-        // $vacxins->password = Hash::make($request->password);
-        $vacxins->phone = $request->phone;
-        $vacxins->address = $request->address;
+         $vacxins->id_pet = $request->id_pet;  
+         $vacxins->name = $request->name;
+         $vacxins->price = $request->price;
+         $vacxins->num = $request->num;
+         $vacxins->image = $request->image;
+         $vacxins->note = $request->note;
         $vacxins->save();
         return redirect()->back()->with('success', 'Thêm thành công');
     }
@@ -82,12 +82,12 @@ class VacxinController extends Controller
     public function update(Request $request, $id)
     {
         $vacxins = Vacxin::find($id);
-        $vacxins->id_role = $request->id_role;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $vacxins->id_pet = $request->id_pet;  
         $vacxins->name = $request->name;
-        $vacxins->email = $request->email;
-        // $vacxins->password = Hash::make($request->password);
-        $vacxins->phone = $request->phone;
-        $vacxins->address = $request->address;
+        $vacxins->price = $request->price;
+        $vacxins->num = $request->num;
+        $vacxins->image = $request->image;
+        $vacxins->note = $request->note;
         $vacxins->save();
     }
 

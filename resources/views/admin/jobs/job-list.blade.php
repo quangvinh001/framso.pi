@@ -27,6 +27,7 @@
                         <thead>
                             <tr>
                                 <th class="data-title">ID</th>
+                                <th class="data-title">Nhân Viên</th>
                                 <th class="data-title">Tên Công Việc</th>
                                 <th class="data-title"></th>
                                 <th class="data-title">Trạng Thái</th>

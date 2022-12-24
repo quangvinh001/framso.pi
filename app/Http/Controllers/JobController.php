@@ -40,12 +40,13 @@ class JobController extends Controller
     public function store(Request $request)
     {
         $jobs = new Job();
-        $jobs->id_role = 2;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $jobs->id_user = $request->id_user;  
+        $jobs->id_food = $request->id_food;
+        $jobs->id_vacxin = $request->id_vacxin;
         $jobs->name = $request->name;
-        $jobs->email = $request->email;
-        // $jobs->password = Hash::make($request->password);
-        $jobs->phone = $request->phone;
-        $jobs->address = $request->address;
+        $jobs->note = $request->note;
+        $jobs->note = $request->num;
+        $jobs->note = $request->status;
         $jobs->save();
         return redirect()->back()->with('success', 'Thêm thành công');
     }
@@ -84,12 +85,13 @@ class JobController extends Controller
     public function update(Request $request, $id)
     {
         $jobs = Job::find($id);
-        $jobs->id_role = $request->id_role;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $jobs->id_user = $request->id_user;  
+        $jobs->id_food = $request->id_food;
+        $jobs->id_vacxin = $request->id_vacxin;
         $jobs->name = $request->name;
-        $jobs->email = $request->email;
-        // $jobs->password = Hash::make($request->password);
-        $jobs->phone = $request->phone;
-        $jobs->address = $request->address;
+        $jobs->note = $request->note;
+        $jobs->note = $request->num;
+        $jobs->note = $request->status;
         $jobs->save();
 
         return redirect()->route('jobss.index')->with('success', 'Bạn đã cập nhật thành công');

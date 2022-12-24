@@ -16,9 +16,9 @@ class PetController extends Controller
     public function index()
     {
         $title = "VẬT NUÔI";
-        $pet= Pet::all();
+        $pets = Pet::all();
         // dd($bills);
-        return view('admin.pets.pet-list', compact('pet', 'title'));
+        return view('admin.pets.pet-list', compact('pets', 'title'));
     }
 
     /**
@@ -39,13 +39,14 @@ class PetController extends Controller
      */
     public function store(Request $request)
     {
-         $pets = new Pet();
-        $pets->id_role = 2;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $pets = new Pet();
+        $pets->id_typepet = $request->id_typepet;
         $pets->name = $request->name;
-        $pets->email = $request->email;
-        // $pets->password = Hash::make($request->password);
-        $pets->phone = $request->phone;
-        $pets->address = $request->address;
+        $pets->num = $request->num;
+        $pets->gender = $request->gender;
+        $pets->unit = $request->unit;
+        $pets->image = $request->image;
+        $pets->note = $request->note;
         $pets->save();
         return redirect()->back()->with('success', 'Thêm thành công');
     }
@@ -84,14 +85,15 @@ class PetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pet = pet::find($id);
-        $pet->id_role = $request->id_role;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
-        $pet->name = $request->name;
-        $pet->email = $request->email;
-        $pet->password = Hash::make($request->password);
-        $pet->phone = $request->phone;
-        $pet->address = $request->address;
-        $pet->save();
+        $pets = pet::find($id);
+        $pets->id_typepet = $request->id_typepet;
+        $pets->name = $request->name;
+        $pets->num = $request->num;
+        $pets->gender = $request->gender;
+        $pets->unit = $request->unit;
+        $pets->image = $request->image;
+        $pets->note = $request->note;
+        $pets->save();
 
         return redirect()->route('pets.index')->with('success', 'Bạn đã cập nhật thành công');
     }

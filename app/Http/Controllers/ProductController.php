@@ -38,12 +38,13 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $products = new Product();
-        $products->id_role = 2;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $products->id_typeproduct = $request->id_typeproduct; 
         $products->name = $request->name;
-        $products->email = $request->email;
-        // $products->password = hash()::make($request->password);
-        $products->phone = $request->phone;
-        $products->address = $request->address;
+        $products->price = $request->price;
+        $products->num = $request->num;
+        $products->unit = $request->unit;
+        $products->image = $request->image;
+        $products->note = $request->note;
         $products->save();
         return redirect()->back()->with('success', 'Thêm thành công');
     }
@@ -82,12 +83,13 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $products = Product::find($id);
-        $products->id_role = $request->id_role;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $products->id_typeproduct = $request->id_typeproduct; 
         $products->name = $request->name;
-        $products->email = $request->email;
-        // $products->password = Hash::make($request->password);
-        $products->phone = $request->phone;
-        $products->address = $request->address;
+        $products->price = $request->price;
+        $products->num = $request->num;
+        $products->unit = $request->unit;
+        $products->image = $request->image;
+        $products->note = $request->note;
         $products->save();
     }
 
