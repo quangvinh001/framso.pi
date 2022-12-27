@@ -35,13 +35,13 @@
                 {{ session('success') }}
             </div>
         @endif
-        <div class="title">Registration</div>
+        <div class="title">Đăng Ký</div>
         <div class="content">
-            <form action="{{ route('postRegisteradmin') }} " method="POST">
+            <form action="{{ route('registers.store') }} " method="POST">
                 <div class="user-details">
                     <div class="input-box">
-                        <span class="details">Username</span>
-                        <input name="name" type="text" placeholder="Enter your name" value="{{old('name')}}">
+                        <span class="details">Họ và Tên</span>
+                        <input name="name" type="text" placeholder="Họ và Tên" value="{{old('name')}}">
                         @error('name')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror
@@ -49,39 +49,39 @@
 
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input name="email" type="text" placeholder="Enter your email" {{old('email')}}>
+                        <input name="email" type="text" placeholder="Email đăng nhập" {{old('email')}}>
                         @error('email')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Phone Number</span>
-                        <input name="phone" type="text" placeholder="Enter your phone number" {{old('phone')}}>
+                        <span class="details">Số Điện Thoại</span>
+                        <input name="phone" type="text" placeholder="Số điện thoại" {{old('phone')}}>
                         @error('phone')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Address</span>
-                        <input name="adrress" type="text" placeholder="Enter your adrress" {{old('adrress')}}>
+                        <span class="details">Địa Chỉ</span>
+                        <input name="adrress" type="text" placeholder="Địa Chỉ" {{old('adrress')}}>
                         @error('adrress')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Password</span>
-                        <input name="password" type="password" placeholder="Enter your password" {{old('password')}}>
+                        <span class="details">Mật Khẩu</span>
+                        <input name="password" type="password" placeholder="Nhập mật khẩu" {{old('password') }}>
                         @error('password')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div class="input-box">
-                        <span class="details">Confirm Password</span>
-                        <input name="repassword" type="password" placeholder="Confirm your password">
+                        <span class="details">Nhập Lại Mật Khẩu</span>
+                        <input name="repassword" type="password" placeholder="Nhập lại mật khẩu">
                         @error('repassword')
                             <span class="ermsg">{{ $message }}</span>
                         @enderror
@@ -90,9 +90,13 @@
                 </div>
 
                 <div class="button">
-                    <input type="submit" value="Register">
+                    <input type="submit" value="Đăng Ký">
                 </div>
                 @csrf
+                <div class="signup">
+                    <span style="font-size: 14px" >Bạn đã có tài khoản ? </span>
+                    <a class="btn" href="{{ route('getlogin') }}">Đăng Nhập</a>
+                </div>
             </form>
         </div>
     </div>
@@ -109,6 +113,6 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
 
-<script src="{{ asset('build/js/script.js') }}"></script>
+
 
 </html>

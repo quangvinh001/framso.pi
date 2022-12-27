@@ -10,13 +10,13 @@ class Vacxin extends Model
     use HasFactory;
     protected $table='vacxins';
      
-    protected $fillable = [
-        'id',
-        'id_pet',
-        'name',
-        'price',
-        'num',
-        'image',
-        'note'
-    ];
+    // protected $fillable = [
+    //     'id',
+    //     'id_pet',
+    //     'name',
+    //     'price',
+    //     'num',
+    //     'image',
+    //     'note'
+    // ];
 }

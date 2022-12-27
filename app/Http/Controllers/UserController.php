@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class UserController extends Controller
 {
@@ -20,10 +21,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $stt = 1;
+        $key ="1";
         $title = "NGƯỜI DÙNG";
+        $role = Role::all();
         $user = User::orderBy('id','desc')->get();
-        return view('admin.users.user-list', compact('user', 'title', 'stt'));
+        return view('admin.user-list', compact('user', 'role' ,'title', 'key'));
     }
 
     /**
@@ -44,7 +46,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
         $user = new User();
         $user->id_role = 2;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
         $user->name = $request->name;
@@ -64,7 +65,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::find($id);
+        $user = User::find($id);
+        return view('admin.user-detail', compact('user', 'role'));
     }
 
     /**
@@ -77,7 +80,7 @@ class UserController extends Controller
     {
         $title = "NGƯỜI DÙNG";
         $user = User::firstWhere('id', $id);
-        return view('admin.users.user-edit', compact('title', 'user'));
+        return view('admin.user-edit', compact('title', 'user'));
     }
 
     /**
@@ -91,10 +94,9 @@ class UserController extends Controller
     {
         
         $user = User::find($id);
-        $user->id_role = $request->id_role;  //level=1: admin; level=2:kỹ thuật; level=3: khách hàng
+        $user->id_role = $request->id_role;  
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
         $user->phone = $request->phone;
         $user->address = $request->address;
         $user->save();

@@ -1,8 +1,8 @@
 const body = document.querySelector("body"),
       modeToggle = body.querySelector(".mode-toggle");
       sidebar = body.querySelector("nav");
-      sidebarToggle = body.querySelector(".sidebar-toggle");
-
+      sidebarToggle = body.querySelector(".sidebar-toggle"),
+      leftSide = document.querySelector('.sidebar');
 let getMode = localStorage.getItem("mode");
 if(getMode && getMode ==="dark"){
     body.classList.toggle("dark");
@@ -29,15 +29,17 @@ sidebarToggle.addEventListener("click", () => {
     }else{
         localStorage.setItem("status", "open");
     }
+    const sidebarItem = leftSide.querySelectorAll('li.showMenu');
+    Array.from(sidebarItem).forEach((item) => {
+        item.classList.remove('showMenu');
+    })
 })
 
-let arrow = document.querySelectorAll(".arrow");
-  for (var i = 0; i < arrow.length; i++) {
-    arrow[i].addEventListener("click", (e)=>{
-   let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-   arrowParent.classList.toggle("showMenu");
-    });
-  }
-
-  
-  
+const sidebarItem = leftSide.querySelectorAll('li');
+Array.from(sidebarItem).forEach((item) => {
+    item.addEventListener('click', () => {
+        const subMenu = item.querySelector('.sub-menu');
+        if (!subMenu) return;
+        item.classList.toggle("showMenu");
+    })
+})

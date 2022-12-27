@@ -16,7 +16,7 @@
           background: linear-gradient(135deg, #71b7e6, #9b59b6);
         } */
 .modal-body {
-    max-width: 700px;
+    max-width: 100%;
     width: 100%;
     background-color: #fff;
     padding: 25px 30px;
@@ -60,6 +60,8 @@ form .input-box span.details {
     font-weight: 500;
     margin-bottom: 5px;
 }
+
+
 
 .user-details .input-box input {
     height: 45px;
@@ -196,4 +198,8 @@ form .button input:hover {
     top: 55px;
     width: 55vh;
     padding-left: 30px;
+}
+
+a{
+    text-decoration: none;
 }

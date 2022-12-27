@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Log;
+
+use function PHPUnit\Framework\isEmpty;
 
 class ProductController extends Controller
 {
@@ -12,11 +17,16 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $key = "1";
+        $date = $request -> query('date', (new DateTime())->format('Y-m-d'));
+        $startDate = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
+        $endDate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
         $title = "SẢN PHẨM";
-        $products = Product::all();
-        return view('admin.products.product-list', compact('products', 'title'));
+        $products = Product::whereDate('created_at', [$startDate, $endDate]) -> get();
+        $total = Product::sum('num');
+        return view('admin.product-list', compact('products', 'title', 'date', 'total','key'));
     }
 
     /**
@@ -70,7 +80,7 @@ class ProductController extends Controller
     {
         $title = "SẢN PHẨM";
         $products = Product::firstWhere('id', $id);
-        return view('admin.products.product-edit', compact('title', 'products'));
+        return view('admin.product-edit', compact('title', 'products'));
     }
 
     /**

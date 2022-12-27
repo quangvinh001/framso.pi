@@ -532,6 +532,7 @@ ol, ul {
     margin-top: -10px;
     background: var(--panel-color);
     display: none;
+    
   }
  li.showMenu .sub-menu{
     display: block;

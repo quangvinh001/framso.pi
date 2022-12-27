@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -15,10 +16,12 @@ class JobController extends Controller
     public $data = [];
     public function index()
     {
+        $key = "1";
         $title = "CÔNG VIỆC";
         $jobs= Job::all();
+        $user= User::all();
         // dd($jobs);
-        return view('admin.jobs.job-list', compact('jobs', 'title'));
+        return view('admin.job-list', compact('jobs','user', 'title','key'));
     }
 
     /**
@@ -39,15 +42,15 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $jobs = new Job();
-        $jobs->id_user = $request->id_user;  
-        $jobs->id_food = $request->id_food;
-        $jobs->id_vacxin = $request->id_vacxin;
+        
         $jobs->name = $request->name;
-        $jobs->note = $request->note;
-        $jobs->note = $request->num;
-        $jobs->note = $request->status;
+        $jobs->status = "Chưa Hoàn Thành";
+
         $jobs->save();
+    
+      
         return redirect()->back()->with('success', 'Thêm thành công');
     }
 
@@ -72,7 +75,7 @@ class JobController extends Controller
     {
         $title = "CÔNG VIỆC";
         $jobs = Job::firstWhere('id', $id);
-        return view('admin.jobs.job-edit', compact('title', 'jobs'));
+        return view('admin.job-edit', compact('title', 'jobs'));
     }
 
     /**

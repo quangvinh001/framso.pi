@@ -14,9 +14,10 @@ class VacxinController extends Controller
      */
     public function index()
     {
+        $key ="1";
         $title = "VACXIN" ;
         $vacxins = Vacxin::all();
-        return view('admin.vacxins.vacxin-list', compact('vacxins', 'title'));
+        return view('admin.vacxin-list', compact('vacxins', 'title','key'));
     }
 
     /**
@@ -69,7 +70,7 @@ class VacxinController extends Controller
     {
         $title = "VACXIN";
         $vacxins = Vacxin::firstWhere('id', $id);
-        return view('admin.vacxins.vacxin-edit', compact('title', 'vacxins'));
+        return view('admin.vacxin-edit', compact('title', 'vacxins'));
     }
 
     /**

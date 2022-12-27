@@ -47,20 +47,20 @@
                 </ul>
             </li>
 
-            <li><a href="#">
+            <li><a href="{{ Route('bills.index') }}">
                     <i class="uil uil-receipt-alt"></i>
                     <span class="link-name">Nhập hàng</span>
                 </a></li>
 
 
-            <li><a href="users">
+            <li><a href="{{ Route('users.index') }}">
                     <i class="uil uil-user"></i>
                     <span class="link-name">Người dùng</span>
                 </a></li>
         </ul>
 
         <ul class="logout-mode">
-            <li><a href="#">
+            <li><a href="{{Route('logout')}}">
                     <i class="uil uil-signout"></i>
                     <span class="link-name">Logout</span>
                 </a></li>

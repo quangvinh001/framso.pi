@@ -6,5 +6,5 @@
         <input type="text" placeholder="Search here...">
     </div>
 
-    <!--<img src="images/profile.jpg" alt="">-->
+   {{-- <img class="avt" src="/build/images/{{ $users->image }}" alt=""> --}}
 </div>

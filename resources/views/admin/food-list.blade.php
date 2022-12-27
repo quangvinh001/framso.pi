@@ -12,7 +12,7 @@
         <div class="container-fluid px-4">
             <div class="add-food">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#addfood">
+                <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#add-food">
                     <i class="uil uil-plus"></i> THÊM
                     {{ $title }}
                 </button>
@@ -37,20 +37,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($foods as $food)
+                            @foreach ($food as $food)
                                 <form action="{{ route('foods.destroy', ['food' => $food->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <tr class="activity-data">
-                                        <td class="data-list"><a href="foods/{{ $food->id }}">{{ $food->id }}</a>
+                                        <td class="data-list"><a href="foods/{{ $food->id }}">{{ $key++ }}</a>
                                         </td>
-                                        <td class="data-list">{{ $food->name }}</td>
+                                        <td style="width: 150px;" class="data-list">{{ $food->name }}</td>
                                         <td class="data-list">{{ $food->price }}</td>
                                         <td class="data-list">{{ $food->num }}</td>
                                         <td><img src="/build/images/{{ $food->image }}" alt=""
                                                 style="width: 120px;"></a></td>
                                         <td class="data-list">{{ $food->unit }}</td>
-                                        <td class="data-list">{{ $food->note }}</td>
+                                        <td style="width: 350px;" class="data-list">{{ $food->note }}</td>
                                         <td class="data-list"> <button type="button" class="btn btn-success "
                                                 data-bs-toggle="modal" data-bs-target="#edit-food">
                                                 <i class="uil uil-edit"></i>
@@ -71,59 +71,23 @@
     </div>
 
     <!-- Modal -->
-    @include('admin.foods.food-add')
+    @include('admin.food-add')
 @endsection
 @section('js')
     <script>
         $(document).ready(function() {
-            $('#add-job-form').validate({
+            $('#add-food-form').validate({
                 debug: false,
                 errorClass: "ermsg",
                 errorElement: "span",
                 rules: {
                     name: {
                         required: true,
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    phone: {
-                        required: true,
-                    },
-                    address: {
-                        required: true,
-                    },
-                    password: {
-                        required: true,
-                        minlength: 6,
-                        maxlength: 20
-                    },
-                    repassword: {
-                        equalTo: '[name=password]'
                     }
                 },
                 messages: {
                     name: {
                         required: 'Vui lòng nhập tên',
-                    },
-                    email: {
-                        required: 'Vui lòng nhập email',
-                        email: 'Không đúng định dạng email'
-                    },
-                    phone: {
-                        required: 'Vui lòng nhập phone',
-                    },
-                    address: {
-                        required: 'Vui lòng nhập address',
-                    },
-                    password: {
-                        required: 'Vui lòng nhập password',
-                        minlength: 'Mật khẩu ít nhất 6 ký tự',
-                        maxlength: 'Mật khẩu nhiều nhất 20 ký tự'
-                    },
-                    repassword: {
-                        equalTo: 'Mật khẩu không giống nhau'
                     }
                 },
                 submitHandler: function(form) {
@@ -135,4 +99,56 @@
             })
         })
     </script>
+       <script>
+        $(document).ready(function () {
+            $('body').on("click", ".btn-success", function () {
+                var $btn = $(this);
+                var urlModal = $btn.data('url');
+                $.get(urlModal, function (result) {
+                    var $modal = $('#edit-food');
+                    if ($modal.length) {
+                        $modal.replaceWith(result);
+                    } else {
+                        $('body').append(result);
+                        $modal = $('#edit-food');
+                    }
+                    new bootstrap.Modal('#edit-food').show();
+                    $modal.on('click', 'button[type=submit]', function () {
+                        $modal.find('form')[0].submit();
+                    });
+                    $('#edit-food-form').validate({
+                        debug: false,
+                        errorClass: "ermsg",
+                        errorElement: "span",
+                        rules: {
+                            name: {
+                                required: true,
+                            }
+                        },
+                        messages: {
+                            name: {
+                                required: 'Vui lòng nhập tên',
+                            }
+                        },
+                        submitHandler: function(form) {
+                            $(form).submit();
+                        },
+                        highlight: function(element, errorClass) {
+                            $(element).removeClass(errorClass);
+                        }
+                    });
+                    $modal.on('hidden.bs.modal', function () {
+                        $modal.remove();
+                    })
+                });
+            })
+        })
+    </script>
+    <script> 
+        $("document").ready(function() {
+          $(".btn-danger").click(function() {
+              return confirm("Bạn có thực sự muốn xóa?");
+          });
+      });
+      </script>
 @endsection

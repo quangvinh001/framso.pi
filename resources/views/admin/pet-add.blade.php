@@ -1,54 +1,54 @@
-<div class="modal fade" id="addvacxin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="add-pet-modal" data-bs-keyboard="false" tabindex="-1"
 aria-labelledby="staticBackdropLabel" aria-hidden="true">
-<div class="modal-dialog">
+<div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm {{$title}}</h1>
-            <button type="pbutton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="content">
-                <form action="{{ route('vacxins.store') }} " id="add-vacxin-form" method="POST">
+                <form action="{{ route('pets.store') }} " id="add-pet-form" method="POST">
                     <div class="user-details">
                         <div class="input-box">
-                            <span class="details">Username</span>
-                            <input name="name" placeholder="Enter your name">
+                            <span class="details">Tên Vật Nuôi</span>
+                            <input name="name" placeholder="Nhập Tên Vật Nuôi">
                             @error('name')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
-                            <span class="details">Email</span>
-                            <input name="email" type="text" placeholder="Enter your email">
-                            @error('email')
+                            <span class="details">Số Lượng</span>
+                            <input name="num" type="text" placeholder="Vui Lòng Nhập Số Lượng">
+                            @error('num')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
-                            <span class="details">Phone Number</span>
-                            <input name="phone" type="text" placeholder="Enter your phone number">
-                            @error('phone')
+                            <span class="details">Đơn Vị</span>
+                            <input name="unit" type="text" placeholder="Vui Lòng Nhập Đợn Vị">
+                            @error('unit')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
-                            <span class="details">Address</span>
-                            <input name="address" type="text" placeholder="Enter your adrress">
-                            @error('address')
+                            <span class="details">Giới Tinh</span>
+                            <input name="gender" type="text" placeholder="Vui Lòng Nhập Giới Tính">
+                            @error('gender')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
-                            <span class="details">Password</span>
-                            <input name="password" type="password" placeholder="Enter your password">
-                            @error('password')
+                            <span class="details"> Hình Ảnh</span>
+                            <input name="image" type="file" placeholder="Vui Lòng Thêm Hình Ảnh">
+                            @error('image')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
-                            <span class="details">Confirm Password</span>
-                            <input name="repassword" type="password" placeholder="Confirm your password">
-                            @error('repassword')
+                            <span class="details"> Giới Thiệu</span>
+                            <input name="note" type="text" placeholder="Giới thiệu vật nuôi">
+                            @error('note')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
@@ -64,3 +64,4 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
     </div>
 </div>
 </div>
+

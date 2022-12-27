@@ -27,9 +27,7 @@
                         <thead>
                             <tr>
                                 <th class="data-title">ID</th>
-                                <th class="data-title">Nhân Viên</th>
                                 <th class="data-title">Tên Công Việc</th>
-                                <th class="data-title"></th>
                                 <th class="data-title">Trạng Thái</th>
                                 <th class="data-title">Action</th>
                             </tr>
@@ -41,11 +39,10 @@
                                 @csrf
                                 @method('delete')
                                     <tr class="activity-data">
-                                        <td class="data-list"><a href="jobs/{{ $job->id }}">{{ $job->id }}</a>
+                                        <td class="data-list"><a href="jobs/{{ $job->id }}">{{ $key++ }}</a>
                                         </td>
                                         <td class="data-list">{{ $job->name }}</td>
-                                        <td class="data-list">{{ $job->note }}</td>
-                                        <td class="data-list">{{ $job->status }}</td>
+                                        <td class="data-list"><a href="">{{ $job->status }}</a></td>
                                         <td class="data-list"> <button type="button" class="btn btn-success "
                                                 data-bs-toggle="modal" data-bs-target="#edit-job">
                                                 <i class="uil uil-edit"></i>
@@ -65,7 +62,7 @@
     </div>
 
     <!-- Modal -->
-    @include('admin.jobs.job-add')
+    @include('admin.job-add')
 @endsection
 @section('js')
     <script>

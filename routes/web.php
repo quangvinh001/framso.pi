@@ -1,13 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use  App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\VacxinController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,46 +25,27 @@ use App\Http\Controllers\VacxinController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.login');
-});
-
-Route::get('/jobs', function () {
-    return view('admin.jobs.job');
-});
-
-
-Route::get('/admin1', function () {
-    return view('admin.dashboard');
-});
-
-
-Route::resource('admins', AdminController::class);
-Route::resource('jobs', JobController::class);
-Route::resource('foods', FoodController::class);
-Route::resource('pets', PetController::class);
-Route::resource('products', ProductController::class);
-Route::resource('vacxins', VacxinController::class);
-Route::resource('users', UserController::class)->shallow();
-Route::get('/login', [AdminController::class, 'getLoginadmin'])->name('getLoginadmin');
-Route::post('/login', [AdminController::class, 'postLoginadmin'])->name('postLoginadmin');
-Route::get('/register', [AdminController::class, 'getRegisteradmin'])->name('getRegisteradmin');
-Route::post('/register', [AdminController::class, 'postRegisteradmin'])->name('postRegisteradmin');
-// Route::get('/users/{id}/', [UserController::class, 'update']);
-
-
-// Route::prefix('admin')->group(function () {
-//     Route::get('/', [AdminController::class, 'getLoginadmin'])->name('getLoginadmin');
-//     Route::post('/', [AdminController::class, 'postLoginadmin'])->name('postLoginadmin');
-
-//     Route::prefix('users')->group(function () {
-//         Route::get('/', [UserController::class, 'getLoginadmin'])->name('getLoginadmin');
-//     });
-//     Route::prefix('jobs')->group(function () {
-//         Route::get('/',[JobController::class, 'getJob'])->name('getJob');
-//     });
-//     Route::prefix('pet')->group(function () {
-//     });
-//     Route::prefix('admin')->group(function () {
-//     });
+// Route::get('/', function () {
+//     return view('admin.login');
 // });
+
+Route::get('/login', [LoginController::class, 'index'])->name('getlogin');
+Route::post('/postlogin', [LoginController::class, 'store'])->name('postLogin');
+
+
+Route::resource('registers', RegisterController::class);
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', [AdminController::class, 'index']);
+    Route::resource('admins', AdminController::class);
+    Route::resource('jobs', JobController::class);
+    Route::resource('foods', FoodController::class);
+    Route::resource('pets', PetController::class);
+    Route::resource('products', ProductController::class);
+    Route::resource('vacxins', VacxinController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('bills', BillController::class);
+    Route::get('/logout', [LogoutController::class, 'perform'])->name('logout');
+});
+
+

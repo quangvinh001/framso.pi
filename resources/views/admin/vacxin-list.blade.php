@@ -27,7 +27,6 @@
                         <thead>
                             <tr>
                                 <th class="data-title">ID</th>
-                                <th class="data-title">Fullname</th>
                                 <th class="data-title">Tên Vacxin</th>
                                 <th class="data-title">Giá</th>
                                 <th class="data-title">Số Lượng</th>
@@ -43,7 +42,7 @@
                                 @csrf
                                 @method('delete')
                                     <tr class="activity-data">
-                                        <td class="data-list"><a href="vacxins/{{ $vacxin->id }}">{{ $vacxin->id }}</a>
+                                        <td class="data-list"><a href="vacxins/{{ $vacxin->id }}">{{ $key++ }}</a>
                                         </td>
                                         <td class="data-list">{{ $vacxin->name }}</td>
                                         <td class="data-list">{{ $vacxin->price }}</td>
@@ -69,7 +68,7 @@
     </div>
 
     <!-- Modal -->
-    @include('admin.vacxins.vacxin-add')
+    @include('admin.vacxin-add')
 @endsection
 @section('js')
     <script>

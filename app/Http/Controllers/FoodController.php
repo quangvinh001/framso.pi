@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Food;
 use Illuminate\Http\Request;
+use DB;
 
 class FoodController extends Controller
 {
@@ -14,9 +15,10 @@ class FoodController extends Controller
      */
     public function index()
     {
+        $key = "1";
         $title = "THỨC ĂN";
-        $foods = Food::all();
-        return view('admin.foods.food-list', compact('foods', 'title'));
+        $food = Food::all();
+        return view('admin.food-list', compact('food', 'title','key'));
     }
 
     /**
@@ -37,18 +39,27 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        $foods = new Food();
-        $foods->id_supplier = $request->id_supplier;
-        $foods->name = $request->name;
-        $foods->price = $request->price;
-        $foods->num = $request->num;
-        $foods->image = $request->image;
-        $foods->unit = $request->unit;
-        $foods->note = $request->note;
-        $foods->save();
+        if($request->hasfile('image_file'))
+        {
+            $file = $request->file('image_file');
+            $name=time().'_'.$file->getClientOriginalName();
+            $destinationPath=public_path('build/images'); //project\public\images, //public_path(): trả về đường dẫn tới thư mục public
+            $file->move($destinationPath, $name); //lưu hình ảnh vào thư mục public/images/cars
+        }
+          
+        $food = new Food();
+        $food->id_supplier = $request->id_supplier;
+        $food->name = $request->name;
+        $food->price = $request->price;
+        $food->num = $request->num;
+        $food->image = $request->image_file;
+        $food->unit = $request->unit;
+        $food->note = $request->note;
+        $food->save();
+        // dd($food);
         return redirect()->back()->with('success', 'Thêm thành công');
+    
     }
-
     /**
      * Display the specified resource.
      *
@@ -69,8 +80,8 @@ class FoodController extends Controller
     public function edit($id)
     {
         $title = "THỨC ĂN";
-        $foods = Food::firstWhere('id', $id);
-        return view('admin.foods.food-edit', compact('title', 'foods'));
+        $food = Food::firstWhere('id', $id);
+        return view('admin.food-edit', compact('title', 'food'));
     }
 
     /**
@@ -82,15 +93,15 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $foods = Food::find($id);
-        $foods->id_supplier = $request->id_supplier;
-        $foods->name = $request->name;
-        $foods->price = $request->price;
-        $foods->num = $request->num;
-        $foods->image = $request->image;
-        $foods->unit = $request->unit;
-        $foods->note = $request->note;
-        $foods->save();
+        $food = Food::find($id);
+        $food->id_supplier = $request->id_supplier;
+        $food->name = $request->name;
+        $food->price = $request->price;
+        $food->num = $request->num;
+        $food->image = $request->image;
+        $food->unit = $request->unit;
+        $food->note = $request->note;
+        $food->save();
 
         return redirect()->route('foods.index')->with('success', 'Bạn đã cập nhật thành công');
     }
@@ -103,8 +114,8 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-         $foods = Food::find($id);
-        $foods->delete();
+         $food = Food::find($id);
+        $food->delete();
         return redirect()->route('foods.index')->with('success', 'Bạn đã xóa thành công');
 }
 }

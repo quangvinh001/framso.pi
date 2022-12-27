@@ -41,32 +41,32 @@
                 {{ session('message') }}
             </div>
         @endif
-        <h1 class="login-top">Login</h1>
-        <form action="{{ route('postLoginadmin') }}" method="post">
+        <h1 class="login-top">Đăng Nhập</h1>
+        <form action="{{ route('postLogin') }}" method="post">
             @csrf
-            <label for="username" class="login-label">Username</label>
+            <label for="email" class="login-label">Email Đăng Nhập</label>
             <div class="login-input">
-                <input type="text" name="email" id="username" placeholder="Type your username" />
+                <input type="email" name="email" id="email" placeholder="Vui lòng nhập email đăng nhập " />
                 <i class="fa-solid fa-user"></i>
             </div>
             @error('email')
                 <span class="ermsg">{{ $message }}</span>
             @enderror
-            <label for="password" class="login-label">Password</label>
+            <label for="password" class="login-label">Mật Khẩu</label>
             <div class="login-input">
-                <input type="password" name="password" id="password" placeholder="Type your password" />
+                <input type="password" name="password" id="password" placeholder="Vui lòng nhập mật khẩu" />
                 <i class="fa-solid fa-lock"></i>
             </div>
             @error('password')
                 <span class="ermsg">{{ $message }}</span>
             @enderror
-            <a class="porgot" href="#">Forgot password?</a>
-            <button type="submit" class="login-sub">Login</button>
+            <a class="porgot" href="#">Quên Mật Khẩu?</a>
+            <button type="submit" class="login-sub">Đăng Nhập</button>
         </form>
 
         <div class="signup">
-            <span>Or Sign Up Using</span>
-            <a class="btn" href="{{ route('postRegisteradmin') }}">Signup</a>
+            <span>Bạn chưa có tài khoản</span>
+            <a class="btn" href="{{ route('registers.create') }}">Đăng Ký</a>
         </div>
 
 
@@ -83,7 +83,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
-
-<script src="{{ asset('build/js/script.js') }}"></script>
 
 </html>

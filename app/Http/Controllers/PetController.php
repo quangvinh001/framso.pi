@@ -15,10 +15,11 @@ class PetController extends Controller
      */
     public function index()
     {
+        $key = "1";
         $title = "VẬT NUÔI";
         $pets = Pet::all();
         // dd($bills);
-        return view('admin.pets.pet-list', compact('pets', 'title'));
+        return view('admin.pet-list', compact('pets', 'title','key'));
     }
 
     /**
@@ -70,7 +71,7 @@ class PetController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.pets.pet-edit', [
+        return view('admin.pet-edit', [
             'pet' => Pet::firstWhere('id', $id),
             'title' => "Vật Nuôi"
         ]);

@@ -1,54 +1,55 @@
-<div class="modal fade" id="add-pet-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade" id="edit-user-modal"  data-bs-keyboard="false" tabindex="-1"
 aria-labelledby="staticBackdropLabel" aria-hidden="true">
-<div class="modal-dialog">
+<div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm {{$title}}</h1>
+            <h1 class="modal-title fs-5" id="staticBackdropLabel"> SỬA {{$title}}</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="content">
-                <form action="{{ route('pets.store') }} " id="add-pet-form" method="POST">
+                <form action="{{ route('users.update', ['user' => $user->id] ) }} " id="edit-user-form" method="post">
+                    @method('put')
                     <div class="user-details">
                         <div class="input-box">
-                            <span class="details">Tên Vật Nuôi</span>
-                            <input name="name" placeholder="Nhập Tên Vật Nuôi">
+                            <span class="details">Họ và Tên</span>
+                            <input name="name" placeholder="Họ và Tên" value="{{ old('username') ?? $user->name  }}">
                             @error('name')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
-                            <span class="details">Số Lượng</span>
-                            <input name="num" type="text" placeholder="Vui Lòng Nhập Số Lượng">
-                            @error('num')
+                            <span class="details">Email</span>
+                            <input name="email" type="text" placeholder="Email đăng nhập" value="{{old('email') ?? $user->email}}">
+                            @error('email')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
-                            <span class="details">Đơn Vị</span>
-                            <input name="unit" type="text" placeholder="Vui Lòng Nhập Đợn Vị">
-                            @error('unit')
+                            <span class="details">Số Điện Thoại</span>
+                            <input name="phone" type="text" placeholder="Số điện thoại" value="{{ old('phone') ?? $user->phone}}">
+                            @error('phone')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
-                            <span class="details">Giới Tinh</span>
-                            <input name="gender" type="text" placeholder="Vui Lòng Nhập Giới Tính">
-                            @error('gender')
+                            <span class="details">Địa Chỉ</span>
+                            <input name="address" type="text" placeholder="Địa Chỉ" value="{{ old('address') ?? $user->address}}">
+                            @error('address')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
-                            <span class="details"> Hình Ảnh</span>
-                            <input name="image" type="text" placeholder="Vui Lòng Thêm Hình Ảnh">
+                            <span class="details">Hình ảnh</span>
+                            <input name="image" type="file" placeholder=" Hình Ảnh">
                             @error('image')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="input-box">
-                            <span class="details"> Giới Thiệu</span>
-                            <input name="note" type="text" placeholder="Giới thiệu vật nuôi">
-                            @error('note')
+                            <span class="details">Role</span>
+                            <input name="id_role" type="text" placeholder=" Cấp vận hành"  value="{{old('id_role') ?? $user->id_role}}"  >
+                            @error('id_role')
                                 <span class="ermsg">{{ $message }}</span>
                             @enderror
                         </div>
@@ -58,10 +59,8 @@ aria-labelledby="staticBackdropLabel" aria-hidden="true">
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Thêm {{$title}}</button>
+            <button type="submit" class="btn btn-primary">SỬA {{$title}}</button>
         </div>
-        </form>
     </div>
 </div>
 </div>
-
