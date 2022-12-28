@@ -8,53 +8,59 @@
             </div>
             <div class="modal-body">
                 <div class="content">
-                    <form action="{{ route('foods.store') }} " id="edit-food-form" method="POST">
+                    <form action="{{ route('foods.update', $food->id ) }} " id="edit-food-form" method="POST" enctype="multipart/form-data">
+                        @method('put')
                         <div class="user-details">
                             <div class="input-box">
                                 <span class="details">Nhà Cung Cấp</span>
-                                <input name="id_supplier" placeholder="" value="{{ old('id_supplier') ?? $foods->id_supplier  }}">
+                                <input name="id_supplier" placeholder="" value="{{ old('id_supplier') ?? $food->id_supplier  }}">
                                 @error('id_supplier')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
                                 <span class="details">Tên Thức Ăn</span>
-                                <input name="name" placeholder="" value="{{ old('name') ?? $foods->name  }}">
+                                <input name="name" placeholder="" value="{{ old('name') ?? $food->name  }}">
                                 @error('name')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
                                 <span class="details">Giá Thức Ăn</span>
-                                <input name="price" placeholder="" value="{{ old('price') ?? $foods->price  }}">
+                                <input name="price" placeholder="" value="{{ old('price') ?? $food->price  }}">
                                 @error('price')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
                                 <span class="details">Số Lượng Thức Ăn</span>
-                                <input name="num" placeholder="" value="{{ old('num') ?? $foods->num  }}">
+                                <input name="num" placeholder="" value="{{ old('num') ?? $food->num  }}">
                                 @error('num')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
                                 <span class="details">Hình Ảnh Thức Ăn</span>
-                                <input name="image" placeholder="" value="{{ old('image') ?? $foods->image  }}">
+                                <input  class="form-control" type="file" id="formFile" value="{{ old('image') ?? $food->image  }}">
                                 @error('image')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
+                            {{-- <div class="mb-3">
+                                <label for="formFile" class="form-label">Hình Ảnh Thức Ăn</label>
+                                <input class="form-control" type="file" id="formFile" value="{{ old('image') ?? $food->image  }}">
+                                
+                              </div> --}}
                             <div class="input-box">
                                 <span class="details">Đơn Vị Thức Ăn</span>
-                                <input name="unit" placeholder="" value="{{ old('unit') ?? $foods->unit  }}">
+                                <input name="unit" placeholder="" value="{{ old('unit') ?? $food->unit  }}">
                                 @error('unit')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
                                 <span class="details">Ghi Chú</span>
-                                <input name="note" placeholder="" value="{{ old('note') ?? $foods->note  }}">
+                                <input name="note" placeholder="" value="{{ old('note') ?? $food->note  }}">
                                 @error('note')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror

@@ -1,5 +1,5 @@
-<div class="modal fade" id="add-food" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+{{-- Modal thêm mới todo --}}
+<div class="modal fade" id="modal-add-food" aria-labelledby="exampleModalToggleLabe">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,20 +10,20 @@
                 <div class="content">
                     <form action="{{ route('foods.store') }} " id="add-food-form" method="POST">
                         <div class="user-details">
-                            <div class="input-box">
+                            {{-- <div class="input-box">
                                 <span class="details">Nhà Cung Cấp</span>
                                 <input name="id_supplier" placeholder="">
                                 @error('id_supplier')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="input-box">
                                 <span class="details">Tên Thức Ăn</span>
                                 <input name="name" placeholder="">
                                 @error('name')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
-                            </div> 
+                            </div>
                             <div class="input-box">
                                 <span class="details">Giá Thức Ăn</span>
                                 <input type="text" name="price" placeholder="">
@@ -38,21 +38,7 @@
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="input-box">
-                                <span class="details">Hình Ảnh Thức Ăn</span>
-                                <input type="file" class="form-control-file" id="" name="image_file" placeholder="" onchange="changeImage(event)">
-                                <img id="image" src="" class="img-thumnail" style="width:10rem" alt=""><br>
-                                <script type="text/javascript">
-                                    const  changeImage=(e)=>{
-                                        const img=document.getElementById('image');
-                                        const file=e.target.files[0]
-                                        img.src=URL.createObjectURL(file);
-                                    }
-                                </script>
-                                @error('image_file')
-                                    <span class="ermsg">{{ $message }}</span>
-                                @enderror
-                            </div>
+
                             <div class="input-box">
                                 <span class="details">Đơn Vị Thức Ăn</span>
                                 <input name="unit" placeholder="">
@@ -62,12 +48,29 @@
                             </div>
                             <div class="input-box">
                                 <span class="details">Ghi Chú</span>
-                                <input name="note" placeholder="">
+                                <textarea name="note" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 @error('note')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
+                            <div class="input-box">
+                                <span class="details">Hình Ảnh Thức Ăn</span>
+                                <input type="file" class="form-control-file" id="" name="image_file"
+                                    placeholder="" onchange="changeImage(event)">
 
+                                @error('image_file')
+                                    <span class="ermsg">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <img id="image" src="" class="img-thumnail" style="width:10rem"
+                                alt=""><br>
+                            <script type="text/javascript">
+                                const changeImage = (e) => {
+                                    const img = document.getElementById('image');
+                                    const file = e.target.files[0]
+                                    img.src = URL.createObjectURL(file);
+                                }
+                            </script>
                         </div>
                         @csrf
                 </div>

@@ -17,6 +17,8 @@
                     <i class="uil uil-plus"></i> 
                     {{ $title }}
                 </button>
+                {{-- <a class="btn btn-primary" data-bs-toggle="modal" href="#bill-add" role="button"><i class="uil uil-plus"></i> 
+                    {{ $title }}</a> --}}
             </div>
             <div class="card mb-4">
                 <div class="card-header">
@@ -28,7 +30,7 @@
                         <thead>
                             <tr>
                                 <th class="data-title">ID</th>
-                                <th class="data-title">Tên Hóa Đơn</th>
+                                <th class="data-title">Tên Chứng Từ</th>
                                 <th class="data-title">Thời Gian</th>
                                 <th class="data-title">Tổng Tiền</th>
                                 <th class="data-title">Hình Thức Thánh Toán</th>
@@ -48,7 +50,7 @@
                                         <td class="data-list">{{ $bill->date }}</td>
                                         <td class="data-list">{{ $bill->total }}</td>
                                         <td class="data-list">{{ $bill->payment }}</td>
-                                        <td class="data-list"><a href="">{{ $bill->status }}</a></td>
+                                        <td class="data-list"><a href="#">{{ $bill->status }}</a></td>
                                         <td class="data-list">
                                             <button data-url="{{ route('bills.edit', $bill->id) }}" type="button" class="btn btn-success js-edit-bill">
                                                 <i class="uil uil-edit"></i>
@@ -72,7 +74,10 @@
     </div>
 
     <!-- Modal -->
-    {{-- @include('admin.bill-add') --}}
+    @include('admin.bill-add')
+    {{-- @include('admin.food-add')
+    @include('admin.product-add')
+    @include('admin.vacxin-add') --}}
 @endsection
 @section('js')
     <script>

@@ -71,10 +71,9 @@ class PetController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.pet-edit', [
-            'pet' => Pet::firstWhere('id', $id),
-            'title' => "Vật Nuôi"
-        ]);
+        $title = "Vật Nuôi";
+        $pets = Pet::firstWhere('id', $id);
+        return view('admin.pet-edit', compact('title', 'pets'));
     }
 
     /**

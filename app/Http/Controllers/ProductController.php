@@ -24,9 +24,9 @@ class ProductController extends Controller
         $startDate = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
         $endDate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
         $title = "SẢN PHẨM";
-        $products = Product::whereDate('created_at', [$startDate, $endDate]) -> get();
+        $product = Product::whereDate('created_at', [$startDate, $endDate]) -> get();
         $total = Product::sum('num');
-        return view('admin.product-list', compact('products', 'title', 'date', 'total','key'));
+        return view('admin.product-list', compact('product', 'title', 'date', 'total','key'));
     }
 
     /**
@@ -47,15 +47,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $products = new Product();
-        $products->id_typeproduct = $request->id_typeproduct; 
-        $products->name = $request->name;
-        $products->price = $request->price;
-        $products->num = $request->num;
-        $products->unit = $request->unit;
-        $products->image = $request->image;
-        $products->note = $request->note;
-        $products->save();
+      
+
+        $product = new Product();
+        $product->id_typeproduct = $request->id_typeproduct; 
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->num = $request->num;
+        $product->unit = $request->unit;
+        $product->image = $request->image_file;
+        $product->note = $request->note;
+        $product->save();
         return redirect()->back()->with('success', 'Thêm thành công');
     }
 
@@ -79,8 +81,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $title = "SẢN PHẨM";
-        $products = Product::firstWhere('id', $id);
-        return view('admin.product-edit', compact('title', 'products'));
+        $product = Product::firstWhere('id', $id);
+        return view('admin.product-edit', compact('title', 'product'));
     }
 
     /**
@@ -98,7 +100,7 @@ class ProductController extends Controller
         $products->price = $request->price;
         $products->num = $request->num;
         $products->unit = $request->unit;
-        $products->image = $request->image;
+        $products->image = $request->image_file;
         $products->note = $request->note;
         $products->save();
     }

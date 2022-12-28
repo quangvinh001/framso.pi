@@ -6,5 +6,5 @@
         <input type="text" placeholder="Search here...">
     </div>
 
-   {{-- <img class="avt" src="/build/images/{{ $users->image }}" alt=""> --}}
+   <img class="avt" src="/build/images/{{Auth::user()->image}}" alt="">
 </div>

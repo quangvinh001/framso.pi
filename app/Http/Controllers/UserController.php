@@ -7,12 +7,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function __construct()
     {
-    
+       
     }
     /**
      * Display a listing of the resource.
@@ -21,6 +22,11 @@ class UserController extends Controller
      */
     public function index()
     {
+        $userLevel = Auth::user()->id_role;
+        // dd($userLevel);
+        if ($userLevel == 2 ){
+            return redirect()->route('pets.index');
+        }
         $key ="1";
         $title = "NGƯỜI DÙNG";
         $role = Role::all();

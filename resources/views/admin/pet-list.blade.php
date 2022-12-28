@@ -50,15 +50,15 @@
                                         <td class="data-list">{{ $pet->unit }}</td>
                                         <td class="data-list">{{ $pet->gender }}</td>
                                         <td class="data-list">{{ $pet->note }}</td>
-                                        <td class="data-list">
-                                            <button data-url="{{ route('pets.edit', $pet->id) }}" type="button" class="btn btn-success js-edit-pet">
-                                                <i class="uil uil-edit"></i>
-                                            </button>
-                                            {{-- <button data-url="{{ route('pets.edit', $pet->id) }}"​ type="button"
-                                                data-target="#edit-pet" data-toggle="modal"
-                                                class="btn btn-warning btn-edit"> <i class="uil uil-edit"></i></button> --}}
-                                            <button name="delete" type="submit" class="btn btn-danger"> <i
-                                                    class="uil uil-trash-alt"></i></button>
+                                        <td>
+                                            {{-- <button data-url="{{ route('foods.show', $food->id) }}"​ type="button"
+                                                data-target="#show" data-toggle="modal"
+                                                class="btn btn-info btn-show">Detail</button> --}}
+                                            <button data-url="{{ route('pets.edit', $pet->id) }}"​ type="button"
+                                                data-target="#edit" data-toggle="modal"
+                                                class="btn btn-warning btn-edit">Edit</button>
+                                            <button ​ type="submit" data-target="#delete" data-toggle="modal"
+                                                class="btn btn-danger btn-delete">Delete</button>
                                         </td>
                                     </tr>
                                 </form>
@@ -119,23 +119,25 @@
         });
     </script>
     <script>
+    
         $(document).ready(function () {
-            $('body').on("click", ".js-edit-pet", function () {
+            $('body').on("click", ".btn-edit", function () {
                 var $btn = $(this);
                 var urlModal = $btn.data('url');
                 $.get(urlModal, function (result) {
-                    var $modal = $('#edit-pet-modal');
+                    var $modal = $('#edit-pet');
                     if ($modal.length) {
                         $modal.replaceWith(result);
                     } else {
                         $('body').append(result);
-                        $modal = $('#edit-pet-modal');
+                        $modal = $('#edit-pet');
                     }
-                    new bootstrap.Modal('#edit-pet-modal').show();
+                    
+                    new bootstrap.Modal('#edit-pet').show();
                     $modal.on('click', 'button[type=submit]', function () {
                         $modal.find('form')[0].submit();
                     });
-                    $('#edit-pet-modal form').validate({
+                    $('#edit-pet form').validate({
                         debug: false,
                         errorClass: "ermsg",
                         errorElement: "span",

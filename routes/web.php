@@ -11,6 +11,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\StudentAjaxController;
 use App\Http\Controllers\VacxinController;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,9 +26,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-//     return view('admin.login');
-// });
+Route::get('/', function () {
+    return view('admin.bill-add');
+});
 
 Route::get('/login', [LoginController::class, 'index'])->name('getlogin');
 Route::post('/postlogin', [LoginController::class, 'store'])->name('postLogin');
@@ -49,3 +50,4 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
+Route::resource('studentajax', StudentAjaxController::class);

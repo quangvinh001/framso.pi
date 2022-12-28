@@ -17,6 +17,10 @@
                     <i class="uil uil-plus"></i> THÊM
                     {{ $title }}
                 </button>
+                {{-- <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#adduser">
+                    <i class="uil uil-plus"></i> PHÂN QUYỀN
+                    {{ $title }}
+                </button> --}}
             </div>
             <div class="card mb-4">
                 <div class="card-header">
@@ -39,6 +43,7 @@
                         </thead>
                         <tbody>
                             @foreach ($user as $user)
+
                                 <form action="{{ route('users.destroy', ['user' => $user->id]) }}" method="post">
                                     @csrf
                                     @method('delete')
@@ -50,14 +55,16 @@
                                         <td class="data-list">****************</td>
                                         <td class="data-list">{{ $user->phone }}</td>
                                         <td class="data-list">{{ $user->address }}</td>
+                                       
                                         <td class="data-list">{{ $user->id_role }}</td>
+                                    
                                         <td class="data-list">
                                             <button data-url="{{ route('users.edit', $user->id) }}" type="button"
                                                 class="btn btn-success js-edit-user">
                                                 <i class="uil uil-edit"></i>
                                             </button>
 
-                                            
+
                                             {{-- <button data-url="{{ route('users.edit', $user->id) }}"​ type="button"
                                                 data-target="#edit-user" data-toggle="modal"
                                                 class="btn btn-warning btn-edit"> <i class="uil uil-edit"></i></button> --}}

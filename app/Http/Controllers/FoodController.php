@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Food;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class FoodController extends Controller
 {
+    public function __construct()   
+    {
+       
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,16 +44,12 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->hasfile('image_file'))
-        {
-            $file = $request->file('image_file');
-            $name=time().'_'.$file->getClientOriginalName();
-            $destinationPath=public_path('build/images'); //project\public\images, //public_path(): trả về đường dẫn tới thư mục public
-            $file->move($destinationPath, $name); //lưu hình ảnh vào thư mục public/images/cars
-        }
+       
+           
+       
           
         $food = new Food();
-        $food->id_supplier = $request->id_supplier;
+        $food->id_supplier ="1";
         $food->name = $request->name;
         $food->price = $request->price;
         $food->num = $request->num;
@@ -94,7 +95,7 @@ class FoodController extends Controller
     public function update(Request $request, $id)
     {
         $food = Food::find($id);
-        $food->id_supplier = $request->id_supplier;
+        $food->id_supplier = "1";
         $food->name = $request->name;
         $food->price = $request->price;
         $food->num = $request->num;

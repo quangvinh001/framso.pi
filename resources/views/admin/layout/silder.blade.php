@@ -9,10 +9,12 @@
 
     <div class="menu-items sidebar ">
         <ul class="nav-links">
+            @if(Auth::user()->id_role >=2 )
             <li><a href="{{ Route('admins.index') }}">
                 <i class="fa fa-bar-chart" aria-hidden="true"></i>
                     <span class="link-name">Dahsboard</span>
                 </a></li>
+                @endif
             <li><a href="{{ Route('pets.index') }}">
                     <i class="fa fa-paw" aria-hidden="true"></i>
                     <span class="link-name">Vật Nuôi</span>
@@ -40,6 +42,7 @@
                             <i class="uil uil-syringe"></i>
                             <span class="link-name">Vacxin</span>
                         </a></li>
+                       
                     <li><a href="{{ Route('foods.index') }}">
                             <i class="uil uil-utensils"></i>
                             <span class="link-name">Thức ăn</span>
@@ -47,16 +50,17 @@
                 </ul>
             </li>
 
-            <li><a href="{{ Route('bills.index') }}">
+            <li><a href="bills">
                     <i class="uil uil-receipt-alt"></i>
                     <span class="link-name">Nhập hàng</span>
                 </a></li>
 
-
-            <li><a href="{{ Route('users.index') }}">
+                @if(Auth::user()->id_role === 1)
+            <li><a href="users">
                     <i class="uil uil-user"></i>
                     <span class="link-name">Người dùng</span>
                 </a></li>
+                @endif
         </ul>
 
         <ul class="logout-mode">

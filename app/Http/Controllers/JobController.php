@@ -44,10 +44,8 @@ class JobController extends Controller
     {
         // dd($request);
         $jobs = new Job();
-        
         $jobs->name = $request->name;
         $jobs->status = "Chưa Hoàn Thành";
-
         $jobs->save();
     
       
@@ -96,7 +94,6 @@ class JobController extends Controller
         $jobs->note = $request->num;
         $jobs->note = $request->status;
         $jobs->save();
-
         return redirect()->route('jobss.index')->with('success', 'Bạn đã cập nhật thành công');
     }
 

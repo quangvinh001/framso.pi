@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pet;
 use App\Models\Vacxin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VacxinController extends Controller
 {
@@ -14,10 +16,12 @@ class VacxinController extends Controller
      */
     public function index()
     {
-        $key ="1";
+        
+        $stt ="1";
         $title = "VACXIN" ;
-        $vacxins = Vacxin::all();
-        return view('admin.vacxin-list', compact('vacxins', 'title','key'));
+        $pet = Pet::all();
+        $vacxin = Vacxin::all();
+        return view('admin.vacxin-list', compact('vacxin','pet', 'title','stt'));
     }
 
     /**
@@ -38,14 +42,16 @@ class VacxinController extends Controller
      */
     public function store(Request $request)
     {
-         $vacxins = new Vacxin();
-         $vacxins->id_pet = $request->id_pet;  
-         $vacxins->name = $request->name;
-         $vacxins->price = $request->price;
-         $vacxins->num = $request->num;
-         $vacxins->image = $request->image;
-         $vacxins->note = $request->note;
-        $vacxins->save();
+        // $id= 
+         $vacxin = new Vacxin();
+         $vacxin->id_pet = $request->id;  
+         $vacxin->name = $request->name;
+         $vacxin->price = $request->price;
+         $vacxin->num = $request->num;
+         $vacxin->unit = $request->unit;
+         $vacxin->image = $request->image_file;
+         $vacxin->note = $request->note;
+        $vacxin->save();
         return redirect()->back()->with('success', 'Thêm thành công');
     }
 
@@ -69,8 +75,9 @@ class VacxinController extends Controller
     public function edit($id)
     {
         $title = "VACXIN";
-        $vacxins = Vacxin::firstWhere('id', $id);
-        return view('admin.vacxin-edit', compact('title', 'vacxins'));
+        $pet = Pet::all();
+        $vacxin = Vacxin::firstWhere('id', $id);
+        return view('admin.vacxin-edit', compact('title','pet', 'vacxin'));
     }
 
     /**
@@ -82,14 +89,16 @@ class VacxinController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $vacxins = Vacxin::find($id);
-        $vacxins->id_pet = $request->id_pet;  
-        $vacxins->name = $request->name;
-        $vacxins->price = $request->price;
-        $vacxins->num = $request->num;
-        $vacxins->image = $request->image;
-        $vacxins->note = $request->note;
-        $vacxins->save();
+        
+        $vacxin = Vacxin::find($id);
+        $vacxin->id_pet = $request->id;  
+        $vacxin->name = $request->name;
+        $vacxin->price = $request->price;
+        $vacxin->num = $request->num;
+        $vacxin->unit = $request->unit;
+        $vacxin->image = $request->image_file;
+        $vacxin->note = $request->note;
+        $vacxin->save();
     }
 
     /**
@@ -100,8 +109,8 @@ class VacxinController extends Controller
      */
     public function destroy($id)
     {
-        $vacxins = Vacxin::find($id);
-        $vacxins->delete();
-        return redirect()->route('vacxin.index')->with('success', 'Bạn đã xóa thành công');
+        $vacxin = Vacxin::find($id);
+        $vacxin->delete();
+        return redirect()->route('vacxins.index')->with('success', 'Bạn đã xóa thành công');
     }
 }
