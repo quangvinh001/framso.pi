@@ -34,7 +34,7 @@
                             <div class="input-box">
                                 <span class="details">Hình Ảnh Thức Ăn</span>
                                 <input type="file" class="form-control-file" id="" name="image_file"
-                                    placeholder="" onchange="changeImage(event)">
+                                    placeholder="" onchange="changeImageadd(event)">
 
                                 @error('image_file')
                                     <span class="ermsg">{{ $message }}</span>
@@ -53,7 +53,7 @@
                                 <img id="image" src="" class="img-thumnail" style="width:10rem"
                                     alt="">
                                 <script type="text/javascript">
-                                    const changeImage = (e) => {
+                                    const changeImageadd = (e) => {
                                         const img = document.getElementById('image');
                                         const file = e.target.files[0]
                                         img.src = URL.createObjectURL(file);

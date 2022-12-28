@@ -55,7 +55,7 @@
                     <span class="link-name">Nhập hàng</span>
                 </a></li>
 
-                @if(Auth::user()->id_role === 1)
+                @if(Auth::user()->id_role == 1)
             <li><a href="users">
                     <i class="uil uil-user"></i>
                     <span class="link-name">Người dùng</span>

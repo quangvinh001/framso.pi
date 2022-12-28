@@ -91,7 +91,7 @@
 @section('js')
     <script type="text/javascript">
         $(document).ready(function() {
-            $('body').on("click", ".btn-edit", function() {
+            $('.btn-edit').on("click", ".edit" , function() {
                 var $btn = $(this);
                 var urlModal = $btn.data('url');
                 $.get(urlModal, function(result) {

@@ -22,11 +22,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $userLevel = Auth::user()->id_role;
-        // dd($userLevel);
-        if ($userLevel == 2 ){
-            return redirect()->route('pets.index');
-        }
+        // $userLevel = Auth::user()->id_role;
+        // // dd($userLevel);
+        // if ($userLevel == 2 ){
+        //     return redirect()->route('pets.index');
+        // }
         $key ="1";
         $title = "NGƯỜI DÙNG";
         $role = Role::all();
@@ -104,6 +104,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
+        $user->image = $request->image;
         $user->address = $request->address;
         $user->save();
 

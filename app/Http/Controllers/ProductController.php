@@ -52,7 +52,6 @@ class ProductController extends Controller
         $product = new Product();
         $product->id_typeproduct = $request->id_typeproduct; 
         $product->name = $request->name;
-        $product->price = $request->price;
         $product->num = $request->num;
         $product->unit = $request->unit;
         $product->image = $request->image_file;
@@ -94,15 +93,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $products = Product::find($id);
-        $products->id_typeproduct = $request->id_typeproduct; 
-        $products->name = $request->name;
-        $products->price = $request->price;
-        $products->num = $request->num;
-        $products->unit = $request->unit;
-        $products->image = $request->image_file;
-        $products->note = $request->note;
-        $products->save();
+        $product = Product::find($id);
+        $product->id_typeproduct = $request->id_typeproduct; 
+        $product->name = $request->name;
+        $product->num = $request->num;
+        $product->unit = $request->unit;
+        $product->image = $request->image_file;
+        $product->note = $request->note;
+        $product->save();
+        
+        return redirect()->route('products.index')->with('success', 'Bạn đã cập nhật thành công');
     }
 
     /**

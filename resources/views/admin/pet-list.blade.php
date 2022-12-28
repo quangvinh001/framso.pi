@@ -133,7 +133,7 @@
                         $modal = $('#edit-pet');
                     }
                     
-                    new bootstrap.Modal('#edit-pet').show();
+                    new bootstrap.Modal('#edit-pet modal').show();
                     $modal.on('click', 'button[type=submit]', function () {
                         $modal.find('form')[0].submit();
                     });

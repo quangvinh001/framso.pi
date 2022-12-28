@@ -45,9 +45,6 @@ class FoodController extends Controller
     public function store(Request $request)
     {
        
-           
-       
-          
         $food = new Food();
         $food->id_supplier ="1";
         $food->name = $request->name;

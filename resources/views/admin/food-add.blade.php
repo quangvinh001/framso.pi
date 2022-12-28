@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Thêm {{ $title }}</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">THÊM {{ $title }}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -19,21 +19,14 @@
                             </div> --}}
                             <div class="input-box">
                                 <span class="details">Tên Thức Ăn</span>
-                                <input name="name" placeholder="">
+                                <input name="name" placeholder="Tên Thức Ăn">
                                 @error('name')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="input-box">
-                                <span class="details">Giá Thức Ăn</span>
-                                <input type="text" name="price" placeholder="">
-                                @error('price')
-                                    <span class="ermsg">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="input-box">
                                 <span class="details">Số Lượng Thức Ăn</span>
-                                <input type="number" name="num" placeholder="">
+                                <input type="number" name="num" placeholder="Số Lượng Thức Ăn">
                                 @error('num')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
@@ -41,7 +34,7 @@
 
                             <div class="input-box">
                                 <span class="details">Đơn Vị Thức Ăn</span>
-                                <input name="unit" placeholder="">
+                                <input name="unit" placeholder="Đơn Vị Thức Ăn">
                                 @error('unit')
                                     <span class="ermsg">{{ $message }}</span>
                                 @enderror
